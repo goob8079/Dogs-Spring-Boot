@@ -56,7 +56,7 @@ public class DogsController {
     }
        
     @PutMapping("/dogs/{id}")
-    public Dog replaceFrenchie(@RequestBody Dog newDog, @PathVariable Long id) {
+    public Dog replaceDog(@RequestBody Dog newDog, @PathVariable Long id) {
         // using the map method and a lambda expression, if a frenchie with the id is found, 
         // a newDog variable is created and assigned with a name and color.
         // if the id is not found, the newDog variable gets put into the repository as a new entry.
@@ -70,7 +70,7 @@ public class DogsController {
     }
 
     @DeleteMapping("dogs/{id}")
-    public void removeFrenchie(@PathVariable Long id) {
+    public void removeDog(@PathVariable Long id) {
         repo.deleteById(id);
     }
 }
