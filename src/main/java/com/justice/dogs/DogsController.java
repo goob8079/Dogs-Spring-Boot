@@ -41,10 +41,15 @@ public class DogsController {
     }
     
     @GetMapping("/dogs/name/{name}") // without /name in the URI, it leads to a 500 error
-    public Dog findFrenchieByName(@PathVariable String name) {
+    public Dog findDogByName(@PathVariable String name) {
         return repo.findByName(name);
     }
 
+    @GetMapping("/dogs/breed/{breed}")
+    public Dog findDogbyBreed(String breed) {
+        return repo.findByBreed(breed);
+    }
+    
     @PostMapping("/dogs") // allows for a new Dog class (with the name and color parameters) to be added or an already existing one to be updated
     public Dog newDog(@RequestBody Dog newDog) {
         return repo.save(newDog);

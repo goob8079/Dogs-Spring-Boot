@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 // allows for CRUD
 public interface DogsRepo extends CrudRepository<Dog, Long> {
     Dog findByName(String name);
+    Dog findByBreed(String breed);
 }
