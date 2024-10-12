@@ -29,7 +29,7 @@ public class DogsController {
         return String.format("Hello %s", param); // %s is formatted to become the param, if no param is entered, it will instead display "World!"
     }
 
-    @GetMapping("/dogs") // displays all dogs
+    @GetMapping("/dogs") // displays all dogs; need to use Iterable because it DogsRepo extends CrudRepository. If it extended JpaRepository instead, List could've been us
     public Iterable<Dog> all() {
         return repo.findAll();
     }
@@ -50,7 +50,7 @@ public class DogsController {
         return repo.findByBreed(breed);
     }
     
-    @PostMapping("/dogs") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
+    @PostMapping("/dogs/add") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
     public Dog newDog(@RequestBody Dog newDog) {
         return repo.save(newDog);
     }

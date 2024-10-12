@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@Entity // makes an object ready for storage in a JPA-based data store
+@Entity // makes an object ready for storage in a database
 public class Dog {
 
     private @Id @GeneratedValue Long id;
