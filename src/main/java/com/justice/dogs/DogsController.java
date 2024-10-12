@@ -34,7 +34,7 @@ public class DogsController {
         return repo.findAll();
     }
     
-    @GetMapping("dogs/{id}") // for finding a single dog by id
+    @GetMapping("/dogs/{id}") // for finding a single dog by id
     public Dog findOne(@PathVariable Long id) {
         return repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
@@ -50,14 +50,14 @@ public class DogsController {
         return repo.findByBreed(breed);
     }
     
-    @PostMapping("/dogs") // allows for a new Dog class (with the name and color parameters) to be added or an already existing one to be updated
+    @PostMapping("/dogs") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
     public Dog newDog(@RequestBody Dog newDog) {
         return repo.save(newDog);
     }
        
     @PutMapping("/dogs/{id}")
     public Dog replaceDog(@RequestBody Dog newDog, @PathVariable Long id) {
-        // using the map method and a lambda expression, if a frenchie with the id is found, 
+        // using the map method and a lambda expression, if a dog with the id is found, 
         // a newDog variable is created and assigned with a name and color.
         // if the id is not found, the newDog variable gets put into the repository as a new entry.
         return repo.findById(id).map(dog -> {
@@ -69,7 +69,7 @@ public class DogsController {
         });
     }
 
-    @DeleteMapping("dogs/{id}")
+    @DeleteMapping("/dogs/{id}")
     public void removeDog(@PathVariable Long id) {
         repo.deleteById(id);
     }
