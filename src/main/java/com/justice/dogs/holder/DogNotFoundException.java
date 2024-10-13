@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class DogNotFoundException extends RuntimeException {
 
     public DogNotFoundException(Long id) {
-        super("Could not find Frenchie " + id); 
+        super("Could not find Dog " + id); 
     }
 }
 
@@ -17,7 +17,7 @@ class DogNotFoundExceptionHelper {
 
     @ExceptionHandler(DogNotFoundException.class) // the advice will only respond when an DogNotFoundException is thrown
     @ResponseStatus(HttpStatus.NOT_FOUND) // issues HTTP 404 error
-    public String frenchieNotFound(DogNotFoundException ex) {
+    public String dogNotFound(DogNotFoundException ex) {
         return ex.getMessage();
     }
 }

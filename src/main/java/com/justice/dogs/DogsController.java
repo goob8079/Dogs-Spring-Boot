@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 public class DogsController {
@@ -24,12 +22,7 @@ public class DogsController {
         this.repo = repo;
     }
 
-    @GetMapping("/home")
-    public String homepage(@RequestParam(value = "param", defaultValue = "World!") String param) {
-        return String.format("Hello %s", param); // %s is formatted to become the param, if no param is entered, it will instead display "World!"
-    }
-
-    @GetMapping("/dogs") // displays all dogs; need to use Iterable because it DogsRepo extends CrudRepository. If it extended JpaRepository instead, List could've been us
+    @GetMapping("/home") // displays all dogs; need to use Iterable because it DogsRepo extends CrudRepository. If it extended JpaRepository instead, List could've been used
     public Iterable<Dog> all() {
         return repo.findAll();
     }
