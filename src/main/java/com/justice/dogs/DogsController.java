@@ -71,7 +71,7 @@ public class DogsController {
     }
        
     @PostMapping("/dogs/update/{id}")
-    public String updateDog(@PathVariable long id, @Valid Dog dog) {
+    public String updateDog(@PathVariable long id, @Valid Dog dog, Model model) {
         repo.save(dog);
         return "redirect:/home";
     }
