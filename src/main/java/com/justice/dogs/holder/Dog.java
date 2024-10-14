@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 @Entity // makes an object ready for storage in a database
 public class Dog {
 
-    private @Id @GeneratedValue Long id;
+    private @Id @GeneratedValue long id;
     private String breed, name, color;
 
     public Dog() {}
@@ -18,7 +18,7 @@ public class Dog {
         this.color = color;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Dog {
         return name;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

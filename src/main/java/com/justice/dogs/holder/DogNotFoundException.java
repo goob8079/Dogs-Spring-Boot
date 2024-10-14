@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 public class DogNotFoundException extends RuntimeException {
 
-    public DogNotFoundException(Long id) {
+    public DogNotFoundException(long id) {
         super("Could not find Dog " + id); 
     }
 }

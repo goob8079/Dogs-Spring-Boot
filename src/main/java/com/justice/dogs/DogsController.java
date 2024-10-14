@@ -6,16 +6,20 @@ import com.justice.dogs.holder.Dog;
 import com.justice.dogs.holder.DogNotFoundException;
 import com.justice.dogs.holder.DogsRepo;
 
+import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class DogsController {
 
+    @Autowired
     private DogsRepo repo;
 
     public DogsController(DogsRepo repo) {
@@ -23,12 +27,20 @@ public class DogsController {
     }
 
     @GetMapping("/home") // displays all dogs; need to use Iterable because it DogsRepo extends CrudRepository. If it extended JpaRepository instead, List could've been used
-    public Iterable<Dog> all() {
-        return repo.findAll();
+    public String homepage(Model model) {
+        model.addAttribute("viewalldogs", repo.findAll()); 
+        return "index";
+    }
+    
+    @GetMapping("/dogs/add")
+    public String addNewDog(Model model) {
+        Dog dog = new Dog();
+        model.addAttribute("dog", dog);
+        return "newdog";
     }
     
     @GetMapping("/dogs/{id}") // for finding a single dog by id
-    public Dog findOne(@PathVariable Long id) {
+    public Dog findOne(@PathVariable long id) {
         return repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
     }
@@ -42,28 +54,33 @@ public class DogsController {
     public Dog findDogbyBreed(String breed) {
         return repo.findByBreed(breed);
     }
-    
-    @PostMapping("/dogs/add") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
-    public Dog newDog(@RequestBody Dog newDog) {
-        return repo.save(newDog);
-    }
-       
-    @PutMapping("/dogs/{id}")
-    public Dog replaceDog(@RequestBody Dog newDog, @PathVariable Long id) {
-        // using the map method and a lambda expression, if a dog with the id is found, 
-        // a newDog variable is created and assigned with a name and color.
-        // if the id is not found, the newDog variable gets put into the repository as a new entry.
-        return repo.findById(id).map(dog -> {
-            dog.setName(newDog.getName());
-            dog.setColor(newDog.getColor());
-            return repo.save(dog);
-        }) .orElseGet(() -> {
-            return repo.save(newDog);
-        });
+
+    @GetMapping("/showupdated/{id}")
+    public String showUpdateForm(@PathVariable long id, Model model) {
+        Dog dog = repo.findById(id)
+            .orElseThrow(() -> new DogNotFoundException(id));
+        
+        model.addAttribute("dog", dog);
+        return "update-dog";
     }
 
-    @DeleteMapping("/dogs/{id}")
-    public void removeDog(@PathVariable Long id) {
+    @PostMapping("/dogs/add") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
+    public String newDog(@ModelAttribute("dog") Dog newDog) {
+        repo.save(newDog);
+        return "redirect:/home";
+    }
+       
+    @PostMapping("/dogs/update/{id}")
+    public String updateDog(@PathVariable long id, @Valid Dog dog) {
+        repo.save(dog);
+        return "redirect:/home";
+    }
+
+    @DeleteMapping("/dogs/delete/{id}")
+    public String removeDog(@PathVariable long id, Model model) {
+        Dog dog = repo.findById(id)
+        .orElseThrow(() -> new DogNotFoundException(id));
         repo.deleteById(id);
+        return "redirect:/home";
     }
 }
