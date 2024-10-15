@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <form action="#" th:action="@{/dogs/add}" th:object="${dog}" method="post">
+        <label for="dog">Dog</label>
+        <input type="text" th:action="*{breed}" id="breed" placeholder="Breed">
+        <input type="text" th:action="*{name}" id="name" placeholder="Name">
+        <input type="text" th:action="#{color}" id="color" placeholder="Color">
+        <input type="submit" value="Add Dog">
+    </form>
+</html>

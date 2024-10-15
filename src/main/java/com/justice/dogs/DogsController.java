@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,27 +27,28 @@ public class DogsController {
         this.repo = repo;
     }
 
-    @GetMapping("/home") // displays all dogs; need to use Iterable because it DogsRepo extends CrudRepository. If it extended JpaRepository instead, List could've been used
+    @GetMapping("/home") 
     public String homepage(Model model) {
         model.addAttribute("viewalldogs", repo.findAll()); 
         return "index";
     }
     
-    @GetMapping("/dogs/add")
-    public String addNewDog(Model model) {
-        Dog dog = new Dog();
-        model.addAttribute("dog", dog);
-        return "newdog";
-    }
+    // @GetMapping("/dogs/add")
+    // public String addNewDog(Model model) {
+    //     Dog dog = new Dog();
+    //     model.addAttribute("dog", dog);
+    //     repo.save(dog);
+    //     return "newdog";
+    // }
     
     @GetMapping("/dogs/{id}") // for finding a single dog by id
-    public Dog findOne(@PathVariable long id) {
+    public Dog findOne(@PathVariable("id") long id) {
         return repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
     }
     
-    @GetMapping("/dogs/name/{name}") // without /name in the URI, it leads to a 500 error
-    public Dog findDogByName(@PathVariable String name) {
+    @GetMapping("/dogs/name/{name}") 
+    public Dog findDogByName(@PathVariable("id") String name) {
         return repo.findByName(name);
     }
 
@@ -56,7 +58,7 @@ public class DogsController {
     }
 
     @GetMapping("/showupdated/{id}")
-    public String showUpdateForm(@PathVariable long id, Model model) {
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
         
@@ -64,23 +66,28 @@ public class DogsController {
         return "update-dog";
     }
 
-    @PostMapping("/dogs/add") // allows for a new Dog class (with the breed, name, and color parameters) to be added or an already existing one to be updated
-    public String newDog(@ModelAttribute("dog") Dog newDog) {
-        repo.save(newDog);
+    @PostMapping("/dogs/add") 
+    public String newDog(@Valid @ModelAttribute("dog") Dog dog, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add-dog";
+        }
+        
+        model.addAttribute("dog", dog);
+        repo.save(dog);
         return "redirect:/home";
     }
        
-    @PostMapping("/dogs/update/{id}")
-    public String updateDog(@PathVariable long id, @Valid Dog dog, Model model) {
+    @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
+    public String updateDog(@PathVariable("id") long id, @Valid Dog dog, Model model) {
         repo.save(dog);
         return "redirect:/home";
     }
 
     @DeleteMapping("/dogs/delete/{id}")
-    public String removeDog(@PathVariable long id, Model model) {
+    public String removeDog(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)
         .orElseThrow(() -> new DogNotFoundException(id));
-        repo.deleteById(id);
+        repo.delete(dog);;
         return "redirect:/home";
     }
 }
