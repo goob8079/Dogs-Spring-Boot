@@ -1,7 +1,5 @@
 package com.justice.dogs;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import com.justice.dogs.holder.Dog;
 import com.justice.dogs.holder.DogNotFoundException;
 import com.justice.dogs.holder.DogsRepo;
@@ -9,15 +7,15 @@ import com.justice.dogs.holder.DogsRepo;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
+@Controller
 public class DogsController {
 
     @Autowired
@@ -33,27 +31,19 @@ public class DogsController {
         return "index";
     }
     
-    // @GetMapping("/dogs/add")
-    // public String addNewDog(Model model) {
-    //     Dog dog = new Dog();
-    //     model.addAttribute("dog", dog);
-    //     repo.save(dog);
-    //     return "newdog";
-    // }
-    
-    @GetMapping("/dogs/{id}") // for finding a single dog by id
+    @GetMapping("/dogs/find/{id}") // for finding a single dog by id
     public Dog findOne(@PathVariable("id") long id) {
         return repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
     }
     
     @GetMapping("/dogs/name/{name}") 
-    public Dog findDogByName(@PathVariable("id") String name) {
+    public Dog findDogByName(@PathVariable("name") String name) {
         return repo.findByName(name);
     }
 
     @GetMapping("/dogs/breed/{breed}")
-    public Dog findDogbyBreed(String breed) {
+    public Dog findDogbyBreed(@PathVariable("name") String breed) {
         return repo.findByBreed(breed);
     }
 
@@ -66,19 +56,27 @@ public class DogsController {
         return "update-dog";
     }
 
+    @GetMapping("/dogs/add") 
+    public String showNewDog(Model model) {
+        model.addAttribute("dog", new Dog());
+        return "add-dog";
+    }
+
     @PostMapping("/dogs/add") 
-    public String newDog(@Valid @ModelAttribute("dog") Dog dog, BindingResult result, Model model) {
+    public String newDog(@Valid Dog dog, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-dog";
         }
         
-        model.addAttribute("dog", dog);
         repo.save(dog);
         return "redirect:/home";
     }
        
     @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
-    public String updateDog(@PathVariable("id") long id, @Valid Dog dog, Model model) {
+    public String updateDog(@PathVariable("id") long id, @Valid Dog dog, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "redirect:/home";
+        }
         repo.save(dog);
         return "redirect:/home";
     }
@@ -87,7 +85,7 @@ public class DogsController {
     public String removeDog(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)
         .orElseThrow(() -> new DogNotFoundException(id));
-        repo.delete(dog);;
+        repo.delete(dog);
         return "redirect:/home";
     }
 }

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <form action="#" th:action="@{/dogs/add}" th:object="${dog}" method="post">
-        <label for="dog">Dog</label>
-        <input type="text" th:action="*{breed}" id="breed" placeholder="Breed">
-        <input type="text" th:action="*{name}" id="name" placeholder="Name">
-        <input type="text" th:action="#{color}" id="color" placeholder="Color">
-        <input type="submit" value="Add Dog">
-    </form>
+    <head>
+        <title>Add Dog</title>
+    </head>
+    <body>
+        <h1>Add a new Dog</h1>
+        <form action="#" th:action="@{/dogs/add}" th:object="${dog}" method="post">
+            <input type="text" th:field="*{breed}" id="breed" placeholder="Breed">
+            <input type="text" th:field="*{name}" id="name" placeholder="Name">
+            <input type="text" th:field="*{color}" id="color" placeholder="Color">
+            <input type="submit" value="Add Dog">
+        </form>
+    </body>
 </html>
