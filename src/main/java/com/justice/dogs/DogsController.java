@@ -47,7 +47,7 @@ public class DogsController {
         return repo.findByBreed(breed);
     }
 
-    @GetMapping("/showupdated/{id}")
+    @GetMapping("/dogs/update/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
