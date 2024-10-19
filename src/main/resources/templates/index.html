@@ -3,14 +3,33 @@
     <head>
         <title>Dogs</title>
     </head>
-    <body>
-        <h1>Dogs</h1>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Breed</th>
-                    <th>Name</th>
-                    <th>Color</th>
-                </tr>
-    </body>   
+    <div th:switch="${dogs}"> 
+        <h2 th:case="null">There are no dogs!</h2>
+        <div th:case="*">
+            <h1>Dogs</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Breed</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Edit Dog</th>
+                        <th>Delete Dog</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="dog : ${dogs}">
+                        <td th:text="${dog.id}"></td>
+                        <td th:text="${dog.breed}"></td>
+                        <td th:text="${dog.name}"></td>
+                        <td th:text="${dog.color}"></td>
+                        <td><a th:href="@{/dogs/update/{id} (id=${dog.id})}">Edit Dog</a></td>
+                        <td><a th:href="@{/dogs/delete/{id} (id=${dog.id})}">Delete Dog</a></td>
+                    </tr> 
+                </tbody> 
+            </table>
+        </div>
+        <p><a href="/home/newdog">Add a new dog</a></p>
+    </div>  
 </html>

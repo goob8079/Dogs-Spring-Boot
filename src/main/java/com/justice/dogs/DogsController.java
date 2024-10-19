@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +24,14 @@ public class DogsController {
         this.repo = repo;
     }
 
+    @GetMapping("/home/newdog")
+    public String signUpForm(Dog dog) {
+        return "add-dog";
+    }
+
     @GetMapping("/home") 
     public String homepage(Model model) {
-        model.addAttribute("viewalldogs", repo.findAll()); 
+        model.addAttribute("dogs", repo.findAll()); 
         return "index";
     }
     
@@ -81,7 +85,7 @@ public class DogsController {
         return "redirect:/home";
     }
 
-    @DeleteMapping("/dogs/delete/{id}")
+    @GetMapping("/dogs/delete/{id}") // can't use DeleteMapping here or else a 405 error occurs
     public String removeDog(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)
         .orElseThrow(() -> new DogNotFoundException(id));
