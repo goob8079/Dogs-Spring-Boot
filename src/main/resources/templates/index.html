@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org"> <!-- basically the homepage -->
     <head>
         <title>Dogs</title>
+        <link rel="stylesheet" th:href="@{/css/main.css}"> <!-- this makes it so the css settings work in the html -->
     </head>
     <div th:switch="${dogs}"> 
-        <h2 th:case="null">There are no dogs!</h2>
-        <div th:case="*">
+        <h2 th:case="null">There are no dogs!</h2> <!-- case for if there are no dogs -->
+        <div th:case="*"> <!-- if there are dogs in the database -->
             <h1>Dogs</h1>
             <table>
                 <thead>
@@ -30,6 +31,6 @@
                 </tbody> 
             </table>
         </div>
-        <p><a href="/home/newdog">Add a new dog</a></p>
+        <p><a href="/home/newdog">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
     </div>  
 </html>

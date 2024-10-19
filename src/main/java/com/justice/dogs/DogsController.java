@@ -24,15 +24,15 @@ public class DogsController {
         this.repo = repo;
     }
 
-    @GetMapping("/home/newdog")
-    public String signUpForm(Dog dog) {
-        return "add-dog";
-    }
-
     @GetMapping("/home") 
     public String homepage(Model model) {
         model.addAttribute("dogs", repo.findAll()); 
         return "index";
+    }
+    
+    @GetMapping("/home/newdog")
+    public String signUpForm(Dog dog) {
+        return "add-dog";
     }
     
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
@@ -41,16 +41,6 @@ public class DogsController {
             .orElseThrow(() -> new DogNotFoundException(id));
     }
     
-    @GetMapping("/dogs/name/{name}") 
-    public Dog findDogByName(@PathVariable("name") String name) {
-        return repo.findByName(name);
-    }
-
-    @GetMapping("/dogs/breed/{breed}")
-    public Dog findDogbyBreed(@PathVariable("name") String breed) {
-        return repo.findByBreed(breed);
-    }
-
     @GetMapping("/dogs/update/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Dog dog = repo.findById(id)

@@ -1,0 +1,42 @@
+h1 {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+div>h1 {
+    color: white;
+    background-color: black;
+    border: 2px solid rgb(255, 3, 108);
+    border-radius: 5px;
+}
+
+div {
+    margin: auto;
+    width: 40%;
+    text-align: center;
+    
+}
+
+p {
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+/* changes the color of the "Add a new dog" link */
+p>a {
+    color: white;
+}
+
+table, th, td {
+    border: 1px solid rgb(255, 3, 108);
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+body {
+    background-image: url(../img/Pibble_origin.png);
+}
