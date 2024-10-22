@@ -26,7 +26,8 @@ p {
 }
 
 /* for the "Add a new dog" link */
-p>a {
+#new-dog-link {
+    padding: 10px;
     color: white;
     background-color: black;
     width: auto;
