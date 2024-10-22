@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Update Dog</title>
+        <link rel="stylesheet" th:href="@{/css/update.css}">
     </head>
     <body>
         <form action="#" th:action="@{/dogs/update/{id} (id=${dog.id})}" th:object="${dog}" th:method="post">

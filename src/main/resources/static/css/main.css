@@ -1,36 +1,41 @@
-h1 {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
+* {
+    font-size: 30px;
+}
+
+div.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div>h1 {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
     color: white;
     background-color: black;
     border: 2px solid rgb(255, 3, 108);
     border-radius: 5px;
-}
-
-div {
-    margin: auto;
-    width: 40%;
-    text-align: center;
-    
+    width: 20%;
 }
 
 p {
     margin: auto;
     text-align: center;
     padding: 20px;
-    color: white;
 }
 
-/* changes the color of the "Add a new dog" link */
+/* for the "Add a new dog" link */
 p>a {
     color: white;
+    background-color: black;
+    width: auto;
+    border: 1px solid rgb(255, 3, 108);
 }
 
 table, th, td {
+    margin: auto;
+    text-align: center;
     border: 1px solid rgb(255, 3, 108);
     border-radius: 5px;
     color: white;
