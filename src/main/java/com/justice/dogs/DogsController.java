@@ -6,6 +6,11 @@ import com.justice.dogs.holder.DogsRepo;
 
 import jakarta.validation.Valid;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +18,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class DogsController {
 
     @Autowired
     private DogsRepo repo;
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
 
     public DogsController(DogsRepo repo) {
         this.repo = repo;
@@ -82,4 +90,21 @@ public class DogsController {
         repo.delete(dog);
         return "redirect:/home";
     }
+
+    @GetMapping("/dogs/upload")
+    public String uploadPicPage() {
+        return "redirect:/home";
+    }
+    
+    // for uploading images
+    @PostMapping("/dogs/upload")
+    public String uploadPicture(Model model, @RequestParam("image") MultipartFile file) throws IOException {
+        StringBuilder fileNames = new StringBuilder();
+        Path filePath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+        fileNames.append(file.getOriginalFilename());
+        Files.write(filePath, file.getBytes());
+        model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+        return "redirect:/home";
+    }
+
 }
