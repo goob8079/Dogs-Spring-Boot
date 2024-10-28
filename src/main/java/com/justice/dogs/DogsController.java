@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +27,11 @@ public class DogsController {
 
     @Autowired
     private DogsRepo repo;
-    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
+    
+    
+    // a variable to indicate where the upload directory for the images is
+    @Value("${upload.directory}")
+    private String UPLOAD_DIRECTORY;
 
     public DogsController(DogsRepo repo) {
         this.repo = repo;
@@ -36,11 +41,6 @@ public class DogsController {
     public String homepage(Model model) {
         model.addAttribute("dogs", repo.findAll()); 
         return "index";
-    }
-    
-    @GetMapping("/home/newdog")
-    public String signUpForm(Dog dog) {
-        return "add-dog";
     }
     
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
@@ -58,6 +58,11 @@ public class DogsController {
         return "update-dog";
     }
 
+    @GetMapping("/home/newdog")
+    public String signUpForm(Dog dog) {
+        return "add-dog";
+    }
+   
     @GetMapping("/dogs/add") 
     public String showNewDog(Model model) {
         model.addAttribute("dog", new Dog());
@@ -93,17 +98,29 @@ public class DogsController {
 
     @GetMapping("/dogs/upload")
     public String uploadPicPage() {
-        return "redirect:/home";
+        return "upload-img";
     }
     
     // for uploading images
     @PostMapping("/dogs/upload")
     public String uploadPicture(Model model, @RequestParam("image") MultipartFile file) throws IOException {
-        StringBuilder fileNames = new StringBuilder();
+        if (file.isEmpty()) {
+            model.addAttribute("msg", "Please upload an image");
+            return "upload-img";
+        }
+
+        // defines the path to save the uploaded images
         Path filePath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-        fileNames.append(file.getOriginalFilename());
-        Files.write(filePath, file.getBytes());
-        model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+        
+        try {
+           // writes the file to the specified path
+            Files.write(filePath, file.getBytes()); 
+            model.addAttribute("msg", "Uploaded images: " + file.getOriginalFilename());
+        } catch (IOException e) {
+            System.err.println("Failed to save file: " + e.getMessage());
+            model.addAttribute("msg", "Failed to add image, please try again");
+        }
+
         return "redirect:/home";
     }
 

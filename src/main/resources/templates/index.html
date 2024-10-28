@@ -22,9 +22,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="dog : ${dogs}">
-                        <form action="@{/dogs/upload}" method="post" enctype="multipart/form-data">
-                            <td><input type="file" name="image" accept="image/*" class="form-control-file"> <img src="" alt=""></td>
-                        </form>
+                        <td><img th:src="src/main/resources/static/uploaded-imgs" alt=""></td>
                         <td th:text="${dog.id}"></td>
                         <td th:text="${dog.breed}"></td>
                         <td th:text="${dog.name}"></td>

@@ -6,13 +6,26 @@
     </head>
     <body>
         <form action="#" th:action="@{/dogs/update/{id} (id=${dog.id})}" th:object="${dog}" th:method="post">
-            <label for="breed">Breed</label>
-            <input type="text" th:field="*{breed}" id="breed" placeholder="Breed">
-            <label for="name">Name</label>
-            <input type="text" th:field="*{name}" id="name" placeholder="Name">
-            <label for="color">Color</label>
-            <input type="text" th:field="*{color}" id="color" placeholder="Color">
-            <input type="submit" value="Update Dog">
+            <div>
+                <label for="breed">Breed</label>
+                <input type="text" th:field="*{breed}" id="breed" placeholder="Breed">
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name" placeholder="Name">
+            </div>
+            <div>
+                <label for="color">Color</label>
+                <input type="text" th:field="*{color}" id="color" placeholder="Color">
+            </div>
+            <div>
+                <form action="@{/dogs/upload}" method="post" enctype="multipart/form-data">
+                    <td><input type="file" name="image" accept="image/*"></td>
+                    <td><button type="submit">Upload image</button></td>
+                </form>
+                <p th:text="${msg}"></p>
+            </div>
+            <input id="update-dogBt" type="submit" value="Update Dog">
         </form>
     </body>
 </html>
