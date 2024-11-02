@@ -19,13 +19,6 @@
                 <label for="color">Color</label>
                 <input type="text" th:field="*{color}" id="color" placeholder="Color">
             </div>
-            <div>
-                <form action="@{/dogs/upload}" method="post" enctype="multipart/form-data">
-                    <td><input type="file" name="image" accept="image/*"></td>
-                    <td><button type="submit">Upload image</button></td>
-                </form>
-                <p th:text="${msg}"></p>
-            </div>
             <input id="add-dogBt" type="submit" value="Add Dog">
         </form>
     </body>
