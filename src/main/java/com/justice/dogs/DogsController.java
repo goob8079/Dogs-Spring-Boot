@@ -27,10 +27,16 @@ public class DogsController {
 
     @GetMapping("/home") 
     public String homepage(Model model) {
-        model.addAttribute("dogs", repo.findAll()); 
         return "index";
     }
     
+    @GetMapping("/home/dogslist")
+    public String dogsListPage(Model model) {
+        model.addAttribute("dogs", repo.findAll());
+        return "dogs-list";
+    }
+    
+
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
     public Dog findOne(@PathVariable("id") long id) {
         return repo.findById(id)

@@ -1,36 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> <!-- basically the homepage -->
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Dogs</title>
-        <link rel="stylesheet" th:href="@{/css/main.css}"> <!-- links main.css to this html file -->
+        <title>DOGS</title>
+        <link rel="stylesheet" href="@{/css/main.css}">
     </head>
-    <div th:switch="${dogs}"> 
-        <h2 th:case="null">There are no dogs!</h2> <!-- case for if there are no dogs -->
-        <div th:case="*"> <!-- if there are dogs in the database -->
-            <h1>Dogs</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Breed</th>
-                        <th>Name</th>
-                        <th>Color</th>
-                        <th>Edit Dog</th>
-                        <th>Delete Dog</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="dog : ${dogs}">
-                        <td th:text="${dog.id}"></td>
-                        <td th:text="${dog.breed}"></td>
-                        <td th:text="${dog.name}"></td>
-                        <td th:text="${dog.color}"></td>
-                        <td><a th:href="@{/dogs/update/{id} (id=${dog.id})}">Edit Dog</a></td>
-                        <td><a th:href="@{/dogs/delete/{id} (id=${dog.id})}">Delete Dog</a></td>
-                    </tr> 
-                </tbody> 
-            </table>
-        </div>
-        <p><a id=new-dog-link href="/home/newdog">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
-    </div>  
+    <tbody>
+        <h1>Hello World!</h1>
+        <p><a id=dogs-list href="/home/dogslist">Go to dogs list</a></p>
+    </tbody>
+
 </html>

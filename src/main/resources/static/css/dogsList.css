@@ -1,0 +1,56 @@
+* {
+    font-size: 30px;
+}
+
+div.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div>h1 {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid rgb(255, 3, 108);
+    border-radius: 5px;
+    width: 20%;
+}
+
+p {
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* for the "Add a new dog" link */
+#new-dog-link {
+    padding: 10px;
+    color: white;
+    background-color: black;
+    width: auto;
+    border: 1px solid rgb(255, 3, 108);
+}
+
+#homepage-link {
+    padding: 10px;
+    color: green;
+    background-color: black;
+    width: auto;
+    border: 1px solid rgb(255, 3, 108);
+}
+
+table, th, td {
+    margin: auto;
+    text-align: center;
+    border: 1px solid rgb(255, 3, 108);
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+body {
+    background-image: url(../img/Pibble_origin.png);
+}
