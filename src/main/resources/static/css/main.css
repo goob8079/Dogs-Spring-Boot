@@ -1,0 +1,42 @@
+#dogs-list {
+    font-size: 20px;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+h1 {
+    margin: auto;
+    text-align: center;
+}
+
+/* This block allows the dog image to spin */
+.doggy {
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+    perspective: 500px;
+    position: absolute;
+    bottom: 15%;
+    right: 3%;
+}
+
+/* @keyframes allows for the control of an animation sequence in steps */
+@keyframes animate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}

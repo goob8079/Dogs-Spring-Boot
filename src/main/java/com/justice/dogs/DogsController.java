@@ -25,18 +25,17 @@ public class DogsController {
         this.repo = repo;
     }
 
-    @GetMapping("/home") 
+    @GetMapping("/home") // the homepage
     public String homepage(Model model) {
         return "index";
     }
     
-    @GetMapping("/home/dogslist")
+    @GetMapping("/home/dogslist") // takes user to the page where they can add dogs to a database
     public String dogsListPage(Model model) {
         model.addAttribute("dogs", repo.findAll());
         return "dogs-list";
     }
     
-
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
     public Dog findOne(@PathVariable("id") long id) {
         return repo.findById(id)

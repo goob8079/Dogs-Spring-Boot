@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>DOGS</title>
-        <link rel="stylesheet" href="@{/css/main.css}">
+        <link rel="stylesheet" th:href="@{/css/main.css}">
     </head>
     <tbody>
-        <h1>Hello World!</h1>
+        <h1>Welcome to the homepage!</h1>
         <p><a id=dogs-list href="/home/dogslist">Go to dogs list</a></p>
+        <div class="doggy">
+            <img id=silly-dog th:src="@{img/silly_white_dog.jpg}" alt="silly white dog">
+        </div>
     </tbody>
 
 </html>
