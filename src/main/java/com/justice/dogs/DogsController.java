@@ -35,6 +35,16 @@ public class DogsController {
         model.addAttribute("dogs", repo.findAll());
         return "dogs-list";
     }
+
+    @GetMapping("/home/dogtypes") // takes user to a page about different dogs
+    public String dogTypesPage(Model model) {
+        return "dog-types";
+    }
+
+    @GetMapping("/home/pibbletypes") // a page only to display types of pibbles
+    public String pibbleTypesPage(Model model) {
+        return "pibble-types";
+    }
     
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
     public Dog findOne(@PathVariable("id") long id) {

@@ -2,8 +2,30 @@
     font-size: 20px;
     margin: auto;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0.5%;
+    left: 0.5%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#dog-types {
+    font-size: 20px;
+    margin: auto;
+    position: absolute;
+    top: 6.5%;
+    left: 0.5%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#pibble-types {
+    font-size: 20px;
+    margin: auto;
+    position: absolute;
+    top: 12.5%;
+    left: 0.5%;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
