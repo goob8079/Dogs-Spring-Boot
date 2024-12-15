@@ -9,3 +9,5 @@ services:
       - 'MYSQL_USER=justice'
     ports:
       - '3306:3306'
+
+# allows docker to connect to a MySQL database within the program

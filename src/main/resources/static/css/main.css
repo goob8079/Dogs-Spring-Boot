@@ -1,51 +1,61 @@
 #dogs-list {
     font-size: 20px;
     margin: auto;
-    position: fixed;
-    top: 0.5%;
-    left: 0.5%;
     padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
+    text-decoration: none;
 }
 
 #dog-types {
-    font-size: 20px;
+    font-size: 30px;
     margin: auto;
-    position: absolute;
-    top: 6.5%;
-    left: 0.5%;
     padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
+    text-decoration: none;
 }
 
 #pibble-types {
-    font-size: 20px;
+    font-size: 40px;
     margin: auto;
-    position: absolute;
-    top: 12.5%;
-    left: 0.5%;
     padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
+    text-decoration: none;
 }
 
 h1 {
     margin: auto;
+    position: absolute;
     text-align: center;
+    top: 30%;
+    width: 100%;
+}
+
+.subpages-container {
+    margin: auto;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.subpages-container > div {
+    text-align: center;
+    display: table-row;
+}
+
+.subpages-container > a {
+    display: table-cell;
+    vertical-align: middle;
+
 }
 
 /* This block allows the dog image to spin */
+/* a "." before a keyword means that it is a class */
 .doggy {
-    width: 200px;
-    height: 100px;
     border-radius: 50%;
     animation: animate 1s linear infinite;
     perspective: 500px;
-    position: absolute;
-    bottom: 15%;
-    right: 3%;
 }
 
 /* @keyframes allows for the control of an animation sequence in steps */
@@ -61,4 +71,8 @@ h1 {
 img {
     height: 200px;
     width: 200px;
+}
+
+body {
+    background-image: none;
 }
