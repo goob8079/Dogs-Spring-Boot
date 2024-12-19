@@ -1,0 +1,8 @@
+.type-pibble > img {
+    height: 100;
+    width: 100;
+}
+
+.type-pibble > p {
+    font-size: 30px;
+}
