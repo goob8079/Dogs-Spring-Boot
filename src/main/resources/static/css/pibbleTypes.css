@@ -1,3 +1,17 @@
+.header1 {
+    margin: auto;
+    text-align: center;
+    width: 180px;
+    border: 2px dashed;
+    border-color: blue;
+}
+
+.type-pibble {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+}
+
 .type-pibble > img {
     height: 100;
     width: 100;
@@ -5,4 +19,25 @@
 
 .type-pibble > p {
     font-size: 30px;
+}
+
+/* this line selects the paragraphs that are located under the img element located within the type-pibble class */
+.type-pibble > img ~ p {
+    text-align: center;
+}
+
+#hidden-pibble {
+    display: none;
+}
+
+#pibble-text:hover + #hidden-pibble {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    font-size: 20px;
+    display: block;
+    color: red;
+    border: 2px outset;
+    border-color: gray;
 }
