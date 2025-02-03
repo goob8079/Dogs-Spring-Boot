@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 @Entity // makes an object ready for storage in a database
 public class Dog {
 
+    // a random value is generated for the dogs' ID
     private @Id @GeneratedValue long id;
     private String breed, name, color;
 

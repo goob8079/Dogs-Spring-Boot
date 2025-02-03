@@ -6,38 +6,86 @@
     border-color: blue;
 }
 
+/* The class containing the rest of the divs.
+The one issue with this is that the images have to be the same or similar sizes
+or else it breaks the whole page */
+.pibble-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+/* to set automatic margins and padding for the type-pibble div */
 .type-pibble {
-    position: absolute;
-    top: 15%;
-    left: 20%;
+    margin: auto;
+    padding: 15px;
 }
 
-.type-pibble > img {
-    height: 100;
-    width: 100;
-}
-
+/* to set the size and margin for the text that says "Pibble" */
 .type-pibble > p {
     font-size: 30px;
+    margin: 0;
 }
 
-/* this line selects the paragraphs that are located under the img element located within the type-pibble class */
+/* this line selects the paragraphs that are located 
+under the img element located within the type-pibble class */
 .type-pibble > img ~ p {
     text-align: center;
 }
 
+/* to hide the description of what a pibble is */
 #hidden-pibble {
     display: none;
 }
 
-#pibble-text:hover + #hidden-pibble {
+#pibble-name {
+    text-decoration: underline;
+}
+
+/* this is so that whenever the user hovers over the "Pibble" text
+the description of what it is appears */
+#pibble-name:hover + #hidden-pibble {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    font-size: 20px;
+    display: block;
+    color: blue;
+    border: 2px outset;
+    border-color: gray;
+}
+
+.type-gmail {
+    margin: auto;
+    padding: 15px;
+}
+
+.type-gmail > p {
+    font-size: 30px;
+    margin: 0;
+}
+
+.type-gmail > img ~ p {
+    text-align: center;
+}
+
+#hidden-gmail {
+    display: none;
+}
+
+#gmail-name {
+    text-decoration: underline;
+}
+
+#gmail-name:hover + #hidden-gmail {
     margin: auto;
     text-align: center;
     padding: 10px;
     width: 150px;
     font-size: 20px;
     display: block;
-    color: red;
+    color: blue;
     border: 2px outset;
     border-color: gray;
 }

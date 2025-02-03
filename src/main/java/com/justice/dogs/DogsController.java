@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+// This is not a RESTful API, rather it requests which serves HTML views and displays the corresponding pages
+
 @Controller
 public class DogsController {
 
@@ -78,17 +80,20 @@ public class DogsController {
             return "add-dog";
         }
         
+        // after the user enters the information about the dog
+        // it gets added to the repo variable's MySQL table
+        // then redirects the user back to the dogslist page
         repo.save(dog);
-        return "redirect:/home";
+        return "redirect:/home/dogslist";
     }
        
     @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
     public String updateDog(@PathVariable("id") long id, @Valid Dog dog, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "redirect:/home";
+            return "redirect:/home/dogslist";
         }
         repo.save(dog);
-        return "redirect:/home";
+        return "redirect:/home/dogslist";
     }
 
     @GetMapping("/dogs/delete/{id}") // can't use DeleteMapping here or else a 405 error occurs
