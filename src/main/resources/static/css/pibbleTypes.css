@@ -8,11 +8,20 @@
 
 /* The class containing the rest of the divs.
 The one issue with this is that the images have to be the same or similar sizes
-or else it breaks the whole page */
-.pibble-container {
+or else it breaks the whole page. */
+/* Another issue with this is because of the hover feature and the text boxes,
+any time the cursor is over the names of one of the pibbles, it causes everything to shift */
+.pibble-container1 {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
+    font-family: Helvetica, sans-serif;
+}
+.pibble-container2 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    font-family: Helvetica, sans-serif;
 }
 
 /* to set automatic margins and padding for the type-pibble div */
@@ -20,35 +29,30 @@ or else it breaks the whole page */
     margin: auto;
     padding: 15px;
 }
-
 /* to set the size and margin for the text that says "Pibble" */
 .type-pibble > p {
     font-size: 30px;
     margin: 0;
 }
-
 /* this line selects the paragraphs that are located 
 under the img element located within the type-pibble class */
 .type-pibble > img ~ p {
     text-align: center;
 }
-
 /* to hide the description of what a pibble is */
 #hidden-pibble {
     display: none;
 }
-
 #pibble-name {
     text-decoration: underline;
 }
-
 /* this is so that whenever the user hovers over the "Pibble" text
 the description of what it is appears */
 #pibble-name:hover + #hidden-pibble {
     margin: auto;
     text-align: center;
     padding: 10px;
-    width: 200px;
+    width: 250px;
     font-size: 20px;
     display: block;
     color: blue;
@@ -60,24 +64,19 @@ the description of what it is appears */
     margin: auto;
     padding: 15px;
 }
-
 .type-gmail > p {
     font-size: 30px;
     margin: 0;
 }
-
 .type-gmail > img ~ p {
     text-align: center;
 }
-
 #hidden-gmail {
     display: none;
 }
-
 #gmail-name {
     text-decoration: underline;
 }
-
 #gmail-name:hover + #hidden-gmail {
     margin: auto;
     text-align: center;
@@ -88,4 +87,93 @@ the description of what it is appears */
     color: blue;
     border: 2px outset;
     border-color: gray;
+}
+
+.type-washington {
+    margin: auto;
+    padding: 15px;
+}
+.type-washington > p {
+    font-size: 30px;
+    margin: 0;
+}
+.type-washington > img ~ p {
+    text-align: center;
+}
+#hidden-washington {
+    display: none;
+}
+#washington-name {
+    text-decoration: underline;
+}
+#washington-name:hover + #hidden-washington {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    font-size: 20px;
+    display: block;
+    color: blue;
+    border: 2px outset;
+    border-color: gray;
+}
+
+.type-bagel {
+    margin: auto;
+    padding: 15px;
+}
+.type-bagel > p {
+    font-size: 30px;
+    margin: 0;
+}
+.type-bagel > img ~ p {
+    text-align: center;
+}
+#hidden-bagel {
+    display: none;
+}
+#bagel-name {
+    text-decoration: underline;
+}
+#bagel-name:hover + #hidden-bagel {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    font-size: 20px;
+    display: block;
+    color: blanchedalmond;
+    background-color: black;
+    border: 2px double;
+    border-color: burlywood;
+}
+
+.type-geeble {
+    margin: auto;
+    padding: 15px;
+}
+.type-geeble > p {
+    font-size: 30px;
+    margin: 0;
+}
+.type-geeble > img ~ p {
+    text-align: center;
+}
+#hidden-geeble {
+    display: none;
+}
+#geeble-name {
+    text-decoration: underline;
+}
+#geeble-name:hover + #hidden-geeble {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    font-size: 20px;
+    display: block;
+    color: blanchedalmond;
+    background-color: black;
+    border: 2px double;
+    border-color: burlywood;
 }
