@@ -132,6 +132,36 @@ the description of what it is appears */
     border-color: gray;
 }
 
+.type-geeble {
+    margin: auto;
+    padding: 15px;
+}
+.type-geeble > p {
+    font-size: 30px;
+    margin: 0;
+}
+.type-geeble > img ~ p {
+    text-align: center;
+}
+#hidden-geeble {
+    display: none;
+}
+#geeble-name {
+    text-decoration: underline;
+}
+#geeble-name:hover + #hidden-geeble {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    font-size: 20px;
+    display: block;
+    color: blanchedalmond;
+    background-color: black;
+    border: 2px double;
+    border-color: burlywood;
+}
+
 .type-bagel {
     margin: auto;
     padding: 15px;
@@ -162,28 +192,28 @@ the description of what it is appears */
     border-color: burlywood;
 }
 
-.type-geeble {
+.type-football {
     margin: auto;
     padding: 15px;
 }
-.type-geeble > p {
+.type-football > p {
     font-size: 30px;
     margin: 0;
 }
-.type-geeble > img ~ p {
+.type-football > img ~ p {
     text-align: center;
 }
-#hidden-geeble {
+#hidden-football {
     display: none;
 }
-#geeble-name {
+#football-name {
     text-decoration: underline;
 }
-#geeble-name:hover + #hidden-geeble {
+#football-name:hover + #hidden-football {
     margin: auto;
     text-align: center;
     padding: 10px;
-    width: 200px;
+    width: 150px;
     font-size: 20px;
     display: block;
     color: blanchedalmond;
