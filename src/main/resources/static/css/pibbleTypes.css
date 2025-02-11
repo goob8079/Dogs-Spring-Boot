@@ -6,18 +6,19 @@
     border-color: blue;
 }
 
+/* Allows the user to scroll down past the last div element even if there
+is nothing below it */
+html, tbody {
+    height: auto;
+    padding-bottom: 200px;
+}
+
 /* The class containing the rest of the divs.
 The one issue with this is that the images have to be the same or similar sizes
 or else it breaks the whole page. */
 /* Another issue with this is because of the hover feature and the text boxes,
 any time the cursor is over the names of one of the pibbles, it causes everything to shift */
-.pibble-container1 {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    font-family: Helvetica, sans-serif;
-}
-.pibble-container2 {
+.pibble-container1, .pibble-container2, .pibble-container3 {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -220,4 +221,34 @@ the description of what it is appears */
     background-color: black;
     border: 2px double;
     border-color: burlywood;
+}
+
+.type-pebble {
+    margin: auto;
+    padding: 15px;
+}
+.type-pebble > p {
+    font-size: 30px;
+    margin: 0;
+}
+.type-pebble > img ~ p {
+    text-align: center;
+}
+#hidden-pebble {
+    display: none;
+}
+#pebble-name {
+    text-decoration: underline;
+}
+#pebble-name:hover + #hidden-pebble {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    font-size: 20px;
+    display: block;
+    color: black;
+    background-color: darkseagreen;
+    border: 2px double;
+    border-color: plum;
 }
