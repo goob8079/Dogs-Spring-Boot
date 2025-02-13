@@ -5,6 +5,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// ViewControllerRegistry is mainly used to return a view (HTML page, etc.) without processing any data.
+// This makes it so a controller is not required to view HTML pages and such. 
+
+// I will keep this MvcConfig class with the ViewControllerRegistry and ResourceHandlerRegistry just in case
+// even though I have a controller.
+
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 

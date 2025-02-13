@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 // This is not a RESTful API, rather it requests which serves HTML views and displays the corresponding pages
+// This application uses Controller, which allows for dyamic pages with data processing.
+
+// Model is used to supply attributes used for rendering views. 
+// It holds application data, that is used by Thymeleaf to render responses(views).
 
 @Controller
 public class DogsController {
@@ -49,13 +53,13 @@ public class DogsController {
     }
     
     @GetMapping("/dogs/find/{id}") // for finding a single dog by id
-    public Dog findOne(@PathVariable("id") long id) {
+    public Dog findOne(@PathVariable long id) {
         return repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
     }
     
     @GetMapping("/dogs/update/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+    public String showUpdateForm(@PathVariable long id, Model model) {
         Dog dog = repo.findById(id)
             .orElseThrow(() -> new DogNotFoundException(id));
         
