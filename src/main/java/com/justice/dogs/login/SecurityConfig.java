@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+// A class for adding security configurations such as a login feature
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -13,11 +14,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-            // this allows specific paths/pages to be loaded without requiring a login 
+            // this allows specific paths/pages to be loaded without requiring a login. 
             // /css/** and /img/** need to be added to allow the css templates and images to load
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/home", "/home/dogslist", "/home/dogtypes", "/home/pibbletypes",
-                                "/css/**", "/img/**").permitAll()
+                                "/home/registration", "/css/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

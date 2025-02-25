@@ -6,6 +6,24 @@ h1 {
     width: 100%;
 }
 
+#login-page {
+    margin: auto;
+    padding: 10px;
+    font-size: 20px;
+    position: absolute;
+    top: 0%;
+    right: 2%;
+}
+
+#registration-page {
+    margin: auto;
+    padding: 10px;
+    font-size: 20px;
+    position: absolute;
+    top: 4%;
+    right: 2%;
+}
+
 #dogs-list {
     font-size: 20px;
     margin: auto;
