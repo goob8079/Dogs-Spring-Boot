@@ -1,9 +1,9 @@
 package com.justice.dogs.holder;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 public class DogNotFoundException extends RuntimeException {
 
@@ -12,7 +12,7 @@ public class DogNotFoundException extends RuntimeException {
     }
 }
 
-@RestControllerAdvice // this advice will get rendered straight into the response body
+@ControllerAdvice // this advice will get rendered straight into the response body
 class DogNotFoundExceptionHelper {
 
     @ExceptionHandler(DogNotFoundException.class) // the advice will only respond when an DogNotFoundException is thrown

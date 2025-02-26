@@ -5,11 +5,13 @@ import jakarta.validation.constraints.NotNull;
 
 // DTO means data transfer object
 // the DTO sends all registration information to the backend
+@MatchingPassword
 public class UserDTO {
     @NotNull
     @NotBlank
     private String username;
 
+    @ValidEmail
     @NotNull
     @NotBlank
     private String email;
