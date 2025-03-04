@@ -11,4 +11,5 @@ To run this program, Docker, MySQL, and SQLTools will need to be installed (when
 This is mainly just for me so I can keep better track of what classes, validators, methods, etc. that I use throughout my project and adding descriptions to them to understand them.
 
 | Class, etc. | Description | File Location | Line |
+| --- | --- | --- | --- |
 | @Target | @Target means the ValidEmail annotation can annotate the specified types | ValidEmail.java | 14 |
