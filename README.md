@@ -12,4 +12,4 @@ This is mainly just for me so I can keep better track of what classes, validator
 
 | Class, etc. | Description | Use Case |
 | --- | --- | --- |
-| @Target | @Target means the ValidEmail annotation can annotate the specified types | [Here]([@Target({ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE})](https://github.com/goob8079/Dogs-SpringBoot/blob/544bfc5fcb7d3ff2240f3e7aaa6772dfbfb52763/src/main/java/com/justice/dogs/login/ValidEmail.java#L14-L15)) |
+| @Target | @Target means the ValidEmail annotation can annotate the specified types | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/2nd-branch/src/main/java/com/justice/dogs/login/ValidEmail.java#L14-L15) |
