@@ -12,13 +12,13 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
     private Pattern pattern;
     private Matcher matcher;
     
-    // this variable uses regular expressions to define how an email should be.
-    // ^ indicates the beginning, so the first part must include any of these strings: A-Z, a-z, 0-9, -, and + .
-    // the + after the first brackets means that there can be 0 or more instances of a string containing what is in the parentheses
-    // which must be followed by an @.
-    // after the @, there must be a string containing what is in the brackets,
-    // which can then be followed by 0 or more instances of what is inside the parentheses.
-    // the final parentheses indicates that there must be a . followed by a domain (such as .com, .org, etc.)
+    // the email should follow a pattern like: 
+    // (beginning(^)) a string[letters, numbers, -+] (1 or more instances of the string(+)), 
+    // (0 or more instances(*)) a dot(.) followed by a string[letters, numbers, -] (1 or more instances of the string(+) (this is optional)),
+    // an @ symbol,
+    // a string[letters, numbers, -] (1 or more instances of the string(+)) , 
+    // (0 or more instaces(*)) a string[letters, numbers],
+    // (must have a match at the end of the string($)) a string containing the domain[.com, .org, .net] (must have at least two letters{2,})
     private static final String EMAIL_PATTERN = ("^[_A-Za-z0-9-+]+ (.[_A-Za-z0-9-]+)* @" + 
     "[A-Za-z0-9-]+ (.[A-Za-z0-9]+)* (.[A-Za-z]{2,})$");
 
