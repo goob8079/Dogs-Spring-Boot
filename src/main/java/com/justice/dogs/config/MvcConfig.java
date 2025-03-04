@@ -1,4 +1,4 @@
-package com.justice.dogs.login;
+package com.justice.dogs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,9 +34,5 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
-    }
-
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDto, HttpServletRequest request) {
-        return registerUserAccount(userDto, request);
     }
 }

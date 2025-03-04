@@ -1,4 +1,4 @@
-package com.justice.dogs.holder;
+package com.justice.dogs.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

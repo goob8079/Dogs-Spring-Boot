@@ -1,4 +1,4 @@
-package com.justice.dogs.login;
+package com.justice.dogs.account;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

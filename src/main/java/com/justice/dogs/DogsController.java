@@ -1,11 +1,10 @@
 package com.justice.dogs;
 
+import com.justice.dogs.exceptions.DogNotFoundException;
 import com.justice.dogs.holder.Dog;
-import com.justice.dogs.holder.DogNotFoundException;
 import com.justice.dogs.holder.DogsRepo;
 
 import jakarta.validation.Valid;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
