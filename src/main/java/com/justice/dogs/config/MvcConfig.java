@@ -1,4 +1,4 @@
-package com.justice.dogs.login;
+package com.justice.dogs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.ModelAttribute;

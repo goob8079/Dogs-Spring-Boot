@@ -1,4 +1,4 @@
-package com.justice.dogs.login;
+package com.justice.dogs.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

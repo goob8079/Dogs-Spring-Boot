@@ -1,4 +1,7 @@
-package com.justice.dogs.login;
+package com.justice.dogs.account.user;
+
+import com.justice.dogs.account.password.MatchingPassword;
+import com.justice.dogs.account.email.ValidEmail;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

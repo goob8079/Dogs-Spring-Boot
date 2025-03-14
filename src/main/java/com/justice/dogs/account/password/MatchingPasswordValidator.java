@@ -1,4 +1,6 @@
-package com.justice.dogs.login;
+package com.justice.dogs.account.password;
+
+import com.justice.dogs.account.user.UserDTO;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
