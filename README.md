@@ -1,3 +1,5 @@
+<h1>Trying to make a basic login page and registration form</h1>
+
 Trying to make a backend for a website to display different dogs and such
 Front-end will be made with Thymeleaf and HTML at the moment
 

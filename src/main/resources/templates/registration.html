@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Page</title>
+        <link rel="stylesheet" th:href="@{/css/registration.css}">
+    </head>
+    <!-- ${} indicates variable names 
+     *{} selects the child of the chosen object and injects it into the template file (HTML)
+     #{} brings externalized text (such as those in a .properties file) into the template file -->
+    <body>
+        <h1>Register a new account</h1>
+        <form th:action="@{/registration}" th:object="${user}" method="post" enctype="utf8">
+            <div>
+                <label th:text="#{label.text.username}">Username</label>
+                <input th:field="*{username}"/>
+                <p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation Error</p>
+            </div>
+            <div>
+                <label th:text="#{label.text.password}">Password</label>
+                <input type="password" th:field="*{password}"/>
+                <p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation Error</p>
+            </div>
+            <div>
+                <label th:text="#{label.user.email}">email</label>
+                <input type="email" th:field="*{email}"/>
+                <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+            </div>
+            <div>
+                <label th:text="#{label.user.confirmPass}">Confirm</label>
+                <input type="password" th:field="*{matchinPassword}"/>
+            </div>
+            <button type="submit" th:text="#{label.form.submit}">Submit</button>
+        </form>
+        <a th:href="@{/templates/login.html}">Login</a>
+    </body>
+</html>
