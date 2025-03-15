@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.justice.dogs.account.email.OnRegistrationCompleteEvent;
 import com.justice.dogs.account.email.VerificationToken;
 import com.justice.dogs.account.user.IUserService;
 import com.justice.dogs.account.user.UserDTO;
@@ -39,6 +41,9 @@ public class LoginController {
 
     @Autowired
     private IUserService service;
+
+    @Autowired
+    private MessageSource messages;
 
     @GetMapping("/home/login")
     public String login() {
@@ -93,6 +98,6 @@ public class LoginController {
 
         user.setEnabled(true);
         service.saveRegisteredUser(user);
-        return "login";
+        return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
     }
 }

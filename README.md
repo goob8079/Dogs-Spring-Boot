@@ -1,3 +1,5 @@
+<h1>I've decided to stop committing to this branch because the tutorial I've been following doesn't go in depth as to how everything works and theres way too many issues with the code</h1>
+
 Trying to make a backend for a website to display different dogs and such
 Front-end will be made with Thymeleaf and HTML at the moment
 
@@ -18,3 +20,4 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Transactional | This annotation makes it so that either everything in a class works, or nothing occurs at all if it doesn't | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/account/MyUserDetailsService.java#L17) |
 | @OneToOne | This annotation means for one instance, there is exactly one related instance in the other entity. | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/account/VerificationToken.java#L28-L29) |
 | @OneToOne(fetch = FetchType.EAGER) | FetchType.EAGER means that when the parent entity is fetched, the child entity will be fetched immediately also | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/account/VerificationToken.java#L29-L30) |
+

@@ -5,6 +5,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.justice.dogs.account.user.IUserService;
 import com.justice.dogs.account.user.User;
@@ -15,7 +17,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     private IUserService service;
 
     @Autowired
-    private MessageSource source;
+    private MessageSource messages;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -25,6 +27,9 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         this.confirmRegistration(event);
     }
 
+    // receives the OnRegistrationCompleteEvent, 
+    // then extracts all necessary User information from it,
+    // create a verification token, persist it, and send it as a parameter to the "Confirm Registration" link.
     private void confirmRegistration(OnRegistrationCompleteEvent event) {
         User user = event.getUser();
         String token = UUID.randomUUID().toString();

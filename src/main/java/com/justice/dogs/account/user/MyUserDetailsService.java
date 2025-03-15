@@ -15,25 +15,33 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class MyUserDetailsService implements UserDetailsService{
+public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository repo;
 
-    public UserDetails loadUserbyUsername(String email) throws UsernameNotFoundException {
-        User user = repo.findByEmail(email);
-        if (user == null) {
-            throw new UsernameNotFoundException("A user with this username not found: " + email);
-        }
+    public MyUserDetailsService() {}
 
+    public UserDetails loadUserbyUsername(String email) throws UsernameNotFoundException {
         // account checks
         boolean enabled = true;
         boolean accNotExpired = true;
         boolean credentialsNotExpired = true;
         boolean accNotLocked = true;
 
-        return new User(user.getEmail(), user.getPassword(), 
-            enabled, accNotExpired, credentialsNotExpired, accNotLocked, getAuthorities(user.getRoles()));
+        try {
+            User user = repo.findByEmail(email);
+            if (user == null) {
+                throw new UsernameNotFoundException("No user with that username found" + email);
+            }
+
+            return new org.springframework.security.core.userdetails.User(
+                user.getEmail(), user.getPassword().toLowerCase(), user.isEnabled(),
+                accNotExpired, credentialsNotExpired, accNotLocked, getAuthorities(user.getRole()));
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }  
     }
 
     private static List<GrantedAuthority> getAuthorities (List<String> roles) {

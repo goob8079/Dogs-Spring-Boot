@@ -1,12 +1,13 @@
 package com.justice.dogs.account.user;
 
+import com.justice.dogs.account.email.VerificationToken;
+import com.justice.dogs.account.email.VerificationTokenRepository;
 import com.justice.dogs.account.user.UserRepository;
 import com.justice.dogs.exceptions.UserAlreadyExistsException;
 
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,9 @@ public class UserService implements IUserService {
     
     @Autowired
     private UserRepository repo;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepo;
 
     @Override
     public User registerNewUserAccount(UserDTO userDto) throws UserAlreadyExistsException {
@@ -36,5 +40,27 @@ public class UserService implements IUserService {
 
     private boolean emailExists(String email) {
         return repo.findByEmail(email) != null;
+    }
+
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepo.findByToken(verificationToken).getUser();
+        return user;
+    }
+    
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepo.findByToken(VerificationToken);
+    }
+    
+    @Override
+    public void saveRegisteredUser(User user) {
+        repo.save(user);
+    }
+    
+    @Override
+    public void createVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepo.save(myToken);
     }
 }
