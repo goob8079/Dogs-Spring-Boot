@@ -105,5 +105,5 @@ public class DogsController {
         .orElseThrow(() -> new DogNotFoundException(id));
         repo.delete(dog);
         return "redirect:/home";
-    }    
+    }
 }

@@ -9,5 +9,5 @@ public class LoginController {
     @GetMapping("/home/login")
     public String login() {
         return "login";
-    }
+    }    
 }
