@@ -3,8 +3,10 @@ package com.justice.dogs.holder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity // makes an object ready for storage in a database
+@Table(name = "dog")
 public class Dog {
 
     // a random value is generated for the dogs' ID

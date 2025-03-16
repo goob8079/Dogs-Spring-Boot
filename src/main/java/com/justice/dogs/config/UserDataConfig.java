@@ -4,12 +4,11 @@ import java.util.HashMap;
 
 import javax.sql.DataSource;
 
-import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -20,21 +19,20 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @PropertySource({ "classpath:application.properties" })
 @EnableJpaRepositories(
-    basePackages = "com.justice.dogs.holder",
-    entityManagerFactoryRef = "dogsEntityManager",
-    transactionManagerRef = "dogsTransactionManager"
+    basePackages = "com.justice.dogs.users",
+    entityManagerFactoryRef = "userEntityManager",
+    transactionManagerRef = "userTransactionManager"
 )
-public class DogsDataConfig {
+public class UserDataConfig {
 
     @Autowired
     private Environment env;
 
     @Bean
-    @Primary
-    public LocalContainerEntityManagerFactoryBean dogsEntityManager() {
+    public LocalContainerEntityManagerFactoryBean userEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dogsDataSource());
-        em.setPackagesToScan(new String[] { "com.justice.dogs.holder" });
+        em.setDataSource(userDataSource());
+        em.setPackagesToScan(new String[] { "com.justice.dogs.users" });
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -46,26 +44,22 @@ public class DogsDataConfig {
         return em;
     }
 
-    // this sets the naming conventions for the application.properties settings.
-    // so, in this case, the settings are kept as their default names to make it easier.
     @Bean
-    @Primary
-    public DataSource dogsDataSource() {
+    public DataSource userDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("spring.datasource.dog.driver-class-name"));
-        dataSource.setUrl(env.getProperty("spring.datasource.dog.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.dog.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.dog.password"));
+        dataSource.setDriverClassName(env.getProperty("spring.datasource.user.driver-class-name"));
+        dataSource.setUrl(env.getProperty("spring.datasource.user.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.user.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.user.password"));
 
         return dataSource;
     }
 
-    @Primary
     @Bean
     public PlatformTransactionManager dogsTransactionManager() {
  
         JpaTransactionManager dogsTransactionManager = new JpaTransactionManager();
-        dogsTransactionManager.setEntityManagerFactory(dogsEntityManager().getObject());
+        dogsTransactionManager.setEntityManagerFactory(userEntityManager().getObject());
         return dogsTransactionManager;
     }
 }

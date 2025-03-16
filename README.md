@@ -1,7 +1,9 @@
 <h1>Trying to make a basic login page and registration form</h1>
 
-Trying to make a backend for a website to display different dogs and such
-Front-end will be made with Thymeleaf and HTML at the moment
+The website will include a backend for a website to display different dogs and such.
+Front-end will be made with Thymeleaf and HTML at the moment.
+
+Finally managed to get two databases (MySQL) running in the application, and containerizing them with Docker.
 
 To run this program, Docker, MySQL, and SQLTools will need to be installed (when using VSCode)
 
