@@ -1,13 +1,14 @@
 services:
   mysql:
-    container_name: 'dogs-mysql'
-    image: 'mysql:latest'
+    container_name: dogs-mysql
+    image: mysql:latest
     environment:
-      - 'MYSQL_DATABASE=dogsDB'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=password123'
-      - 'MYSQL_USER=justice'
+      MYSQL_DATABASE: dogsDb
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: justice
+      MYSQL_TCP_PORT: 3306
     ports:
-      - '3306:3306'
+      - 3306:3306
 
 # allows docker to connect to a MySQL database within the program
