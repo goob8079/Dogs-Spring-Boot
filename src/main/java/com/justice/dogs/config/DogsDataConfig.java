@@ -6,6 +6,8 @@ import javax.sql.DataSource;
 
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -31,6 +33,13 @@ public class DogsDataConfig {
 
     @Bean
     @Primary
+    @ConfigurationProperties(prefix="spring.datasource.dog")
+    public DataSource dogsDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+    
+    @Bean
+    @Primary
     public LocalContainerEntityManagerFactoryBean dogsEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dogsDataSource());
@@ -38,9 +47,11 @@ public class DogsDataConfig {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
+
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("jakarta.persistence.jdbc.url", env.getProperty("spring.datasource.dog.url"));
         em.setJpaPropertyMap(properties);
 
         return em;
@@ -48,20 +59,20 @@ public class DogsDataConfig {
 
     // this sets the naming conventions for the application.properties settings.
     // so, in this case, the settings are kept as their default names to make it easier.
+    // @Bean
+    // @Primary
+    // public DataSource dogsDataSource() {
+    //     DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    //     dataSource.setDriverClassName(env.getProperty("spring.datasource.dog.driver-class-name"));
+    //     dataSource.setUrl(env.getProperty("spring.datasource.dog.url"));
+    //     dataSource.setUsername(env.getProperty("spring.datasource.dog.username"));
+    //     dataSource.setPassword(env.getProperty("spring.datasource.dog.password"));
+
+    //     return dataSource;
+    // }
+
     @Bean
     @Primary
-    public DataSource dogsDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("spring.datasource.dog.driver-class-name"));
-        dataSource.setUrl(env.getProperty("spring.datasource.dog.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.dog.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.dog.password"));
-
-        return dataSource;
-    }
-
-    @Primary
-    @Bean
     public PlatformTransactionManager dogsTransactionManager() {
  
         JpaTransactionManager dogsTransactionManager = new JpaTransactionManager();
