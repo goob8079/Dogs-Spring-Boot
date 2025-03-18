@@ -18,3 +18,21 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Documented | @Documented just defines an annotation and ensures that the custom annotation shows up in the JavaDoc | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L22-L23) |
 | Various Thymeleaf HTML formats | ${} indicates variable names. <br>*{} selects the child of the chosen object and injects it into the template file (HTML). <br>#{} brings externalized text (such as those in a .properties file) into the template file. | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/resources/templates/registration.html) |
 | @Target(ElementType.TYPE) | TYPE means the annotation can be used for classes, interfaces, and enums | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/MatchingPassword.java#L15-L16) |
+
+
+<h2>Issues</h2>
+
+One major issues I've run into so far in this branch was getting two databases connected to this application. This could've been happening because I'm using Docker Compose, but i don't really know. 
+I kept getting the error:
+**java.lang.IllegalStateException: Cannot get a connection as the driver manager is not properly initialized.**
+
+and also the error: 
+**Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling DriverManager.getConnection() [Access denied for user 'justice'@'%' (using password: NO)]**
+
+So in order to fix these issues, I had to go into the Docker containers for each of the databases, and did the following:
+1. Go to Exec
+2. type "mysql -u root -p" (no quotes)
+3. (If user is not created) type "CREATE USER 'justice'@'%' IDENTIFIED WITH 'password';" (no quotes)
+4. type "GRANT PIVILEGE ONN *.* TO 'justice'@'%' WITH GRANT OPTION;"
+
+This took way longer than expected to figure out fixed my issue. 

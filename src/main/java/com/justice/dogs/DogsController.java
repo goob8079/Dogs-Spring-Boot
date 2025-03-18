@@ -1,8 +1,8 @@
 package com.justice.dogs;
 
+import com.justice.dogs.dogsHolder.Dog;
+import com.justice.dogs.dogsHolder.DogsRepo;
 import com.justice.dogs.exceptions.DogNotFoundException;
-import com.justice.dogs.holder.Dog;
-import com.justice.dogs.holder.DogsRepo;
 
 import jakarta.validation.Valid;
 

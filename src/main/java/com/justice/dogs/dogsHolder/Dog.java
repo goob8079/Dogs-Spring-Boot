@@ -1,4 +1,4 @@
-package com.justice.dogs.holder;
+package com.justice.dogs.dogsHolder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

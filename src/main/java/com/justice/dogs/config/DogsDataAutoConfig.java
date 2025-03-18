@@ -9,10 +9,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -21,54 +21,49 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @PropertySource({ "classpath:application.properties" })
 @EnableJpaRepositories(
-    basePackages = "com.justice.dogs.users",
-    entityManagerFactoryRef = "userEntityManager",
-    transactionManagerRef = "userTransactionManager"
+    basePackages = "com.justice.dogs.dogsHolder",
+    entityManagerFactoryRef = "dogsEntityManager",
+    transactionManagerRef = "dogsTransactionManager"
 )
-public class UserDataConfig {
+public class DogsDataAutoConfig {
 
     @Autowired
     private Environment env;
 
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.user")
-    public DataSource userDataSource() {
+    @Primary
+    @ConfigurationProperties(prefix="dogs.datasource")
+    public DataSource dogsDataSource() {
         return DataSourceBuilder.create().build();
-    } 
-    
+    }
+
     @Bean
-    public LocalContainerEntityManagerFactoryBean userEntityManager() {
+    @Primary
+    public LocalContainerEntityManagerFactoryBean dogsEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(userDataSource());
-        em.setPackagesToScan(new String[] { "com.justice.dogs.users" });
+        em.setDataSource(dogsDataSource());
+        em.setPackagesToScan(new String[] { "com.justice.dogs.dogsHolder" });
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
+
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-        properties.put("jakarta.persistence.jdbc.url", env.getProperty("spring.datasource.user.url"));
+        properties.put("hibernate.connection.url", env.getProperty("dogs.datasource.url"));
+        properties.put("hibernate.connection.username", env.getProperty("dogs.datasource.username"));
+        properties.put("hibernate.connection.password", env.getProperty("dogs.datasource.password"));
+        properties.put("hibernate.connection.driver_class", env.getProperty("dogs.datasource.driver-class-name"));
         em.setJpaPropertyMap(properties);
 
         return em;
     }
 
-    // @Bean
-    // public DataSource userDataSource() {
-    //     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    //     dataSource.setDriverClassName(env.getProperty("spring.datasource.user.driver-class-name"));
-    //     dataSource.setUrl(env.getProperty("spring.datasource.user.url"));
-    //     dataSource.setUsername(env.getProperty("spring.datasource.user.username"));
-    //     dataSource.setPassword(env.getProperty("spring.datasource.user.password"));
-
-    //     return dataSource;
-    // }
-
     @Bean
+    @Primary
     public PlatformTransactionManager dogsTransactionManager() {
- 
         JpaTransactionManager dogsTransactionManager = new JpaTransactionManager();
-        dogsTransactionManager.setEntityManagerFactory(userEntityManager().getObject());
+        dogsTransactionManager.setEntityManagerFactory(dogsEntityManager().getObject());
         return dogsTransactionManager;
     }
 }

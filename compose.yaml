@@ -1,20 +1,20 @@
 services:
   mysql:
     container_name: dogs-mysql
-    image: mysql:latest
+    image: mysql
     environment:
-      MYSQL_DATABASE: dogsDb
+      MYSQL_DATABASE: dogsdb
       MYSQL_ROOT_PASSWORD: password123
       MYSQL_PASSWORD: secret
       MYSQL_USER: justice
     ports:
-      - 3306:3306
+      - 3308:3306
     
   mysql2:
     container_name: users-mysql
-    image: mysql:latest
+    image: mysql
     environment:
-      MYSQL_DATABASE: usersDb
+      MYSQL_DATABASE: usersdb
       MYSQL_ROOT_PASSWORD: password123
       MYSQL_PASSWORD: secret
       MYSQL_USER: justice
