@@ -19,7 +19,7 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Documented | @Documented just defines an annotation and ensures that the custom annotation shows up in the JavaDoc | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L22-L23) |
 | Various Thymeleaf HTML formats | ${} indicates variable names. <br>*{} selects the child of the chosen object and injects it into the template file (HTML). <br>#{} brings externalized text (such as those in a .properties file) into the template file. | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/resources/templates/registration.html) |
 
-<h2>Issues</h2>
+# Issues
 
 One major issues I've run into so far in this branch was getting two databases connected to this application. This could've been happening because I'm using Docker Compose, but i don't really know. 
 I kept getting the error:
@@ -35,3 +35,7 @@ So in order to fix these issues, I had to go into the Docker containers for each
 4. type "GRANT PIVILEGE ON *.* TO 'justice'@'%' WITH GRANT OPTION;" (no double quotes)
 
 This took way longer than expected to figure out but I fixed my issue. 
+
+<h2>Current issue</h2>
+
+The current issue is that after the user enters their information on the signup page, it is not being saved to the database.

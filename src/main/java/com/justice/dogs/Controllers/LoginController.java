@@ -1,19 +1,26 @@
-package com.justice.dogs.Controllers;
+package com.justice.dogs.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.justice.dogs.users.UserObj;
 
 import org.springframework.ui.Model;
 
 @Controller
 public class LoginController {
     
-    private boolean authenticate(String username, String password, String email) {
-        return "correctUsername".equals(username) && "correctPassword".equals(password) && "correctEmail".equals(email);
+    private AuthenticationManager authenticationManager;
+
+    private Authentication authenticate(String username, String password) throws AuthenticationException {
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        return authenticationManager.authenticate(authToken);
     }
 
     @GetMapping("/home/login")
@@ -22,20 +29,14 @@ public class LoginController {
     }
     
     @PostMapping("/home/login")
-    public String validLogin(@RequestParam String username, @RequestParam String password, @RequestParam String email, Model model) {
-        boolean isValidUser = authenticate(username, password, email);
-
-        if (isValidUser) {
+    public String validLogin(@RequestParam String username, @RequestParam String password, Model model) {
+        try {
+            Authentication authentication = authenticate(username, password);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
             return "redirect:/home";
-        } else {
-            model.addAttribute("error", "Invalid username or password or email");
+        } catch (AuthenticationException ex) {
+            model.addAttribute("error", "Invalid username or password");
             return "login";
         }
-    }
-
-    @GetMapping("/home/signup")
-    public String signup(Model model) {
-        model.addAttribute("user", new UserObj());
-        return "signup";
     }
 }

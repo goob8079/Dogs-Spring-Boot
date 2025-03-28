@@ -1,4 +1,4 @@
-package com.justice.dogs.Controllers;
+package com.justice.dogs.controllers;
 
 import com.justice.dogs.dogsHolder.Dog;
 import com.justice.dogs.dogsHolder.DogsRepo;

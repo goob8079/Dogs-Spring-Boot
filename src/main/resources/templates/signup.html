@@ -6,7 +6,7 @@
     </head>
     <body>
         <p><a id="homepage" th:href="@{/home}">Homepage</a></p>
-        <p><a id="login" th:href="@{/login}">Login Page</a></p>
+        <p><a id="login" th:href="@{/home/login}">Login Page</a></p>
 
         <h1>Create a new account</h1>
 
@@ -49,9 +49,9 @@
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log("User created:", data);
+                    .then(response => response.text())
+                    .then(text => {
+                        console.log("User created:", text);
                         alert("Signup successful");
                         window.location.href = "/home/login";
                     })
