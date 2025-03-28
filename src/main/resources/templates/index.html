@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>DOGS</title>
         <link rel="stylesheet" th:href="@{/css/index.css}">
     </head>
     <tbody>
         <h1>Welcome to the homepage!</h1>
-        <p><a href="/home/login">Login</a></p>
+        <p><a th:href="@{/home/login}">Login</a></p>
+        <p><a th:href="@{/home/signup}">Signup</a></p>
         <div class="subpages-container">
             <div><p><a id="dogs-list" href="/home/dogslist">Go to dogs list</a></p></div>
             <div><p><a id="dog-types" href="/home/dogtypes">Go to dog types</a></p></div>
@@ -14,6 +16,10 @@
         </div>
         <div class="doggy">
             <img id="silly-dog" th:src="@{img/silly_white_dog.jpg}" alt="silly white dog">
+        </div>
+        
+        <div sec:authorize="isAuthenticated()">
+            Authenticated as <span sec:authentication="name"></span>
         </div>
     </tbody>
 

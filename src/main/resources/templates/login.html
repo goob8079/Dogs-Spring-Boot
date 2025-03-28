@@ -4,8 +4,9 @@
 		<title>Log In Page</title>
 		<link rel="stylesheet" th:href="@{/css/login.css}">
 	</head>
-	<body>
-		<p><a id="homepage" href="/home">Homepage</a></p>
+	<tbody>
+		<p><a id="homepage" th:href="@{/home}">Homepage</a></p>
+		<p><a id="signup" th:href="@{/home/signup}">Create a new account</a></p>
 		<h1>Please Log In</h1>
 
 		<div th:if="${param.error}">
@@ -15,17 +16,20 @@
 			You have been logged out.
 		</div>
 		
-		<form th:action="@{/login}" method="post">
+		<form th:action="@{/home/login}" method="post">
 			<div>
-				<input type="text" name="username" placeholder="Username"/>
+				<label for="username">Username</label>
+				<input type="text" placeholder="Username"/>
 			</div>
 			<div>
-				<input type="text" name="email" placeholder="Email"/>
+				<label for="email">Email</label>
+				<input type="text" placeholder="Email"/>
 			</div>
 			<div>
-				<input type="password" name="password" placeholder="Password"/>
+				<label for="password">Password</label>
+				<input type="password" placeholder="Password"/>
 			</div>
-			<input type="submit" value="Log in" />
+			<button type="submit">Log in</button>
 		</form>
-	</body>
+	</tbody>
 </html>

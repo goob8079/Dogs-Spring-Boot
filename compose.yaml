@@ -23,3 +23,6 @@ services:
     
 
 # allows docker to connect to a MySQL database within the program
+
+# sometimes it may be required to grant permissions to a specific user or else it will not establish a proper connection,
+# SEE README.md, "Issues section".

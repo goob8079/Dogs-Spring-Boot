@@ -3,6 +3,7 @@ package com.justice.dogs.users;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,14 +11,14 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class UserObj {
 
-    private @Id @GeneratedValue long id;
+    private @Id @GeneratedValue(strategy = GenerationType.AUTO) long id;
     
-    @Column(unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
     
     private String password;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     public UserObj() {}
