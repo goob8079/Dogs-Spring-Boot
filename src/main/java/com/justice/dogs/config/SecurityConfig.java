@@ -20,7 +20,6 @@ public class SecurityConfig {
         http
             // this allows specific paths/pages to be loaded without requiring a login. 
             // /css/** and /img/** need to be added to allow the css templates and images to load
-            .csrf(AbstractHttpConfigurer::disable) // csrf has to be disabled to allow account creation
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/home", "/home/dogslist", "/home/dogtypes", "/home/pibbletypes",
                                 "/home/login", "/home/signup", "/css/**", "/img/**").permitAll()
