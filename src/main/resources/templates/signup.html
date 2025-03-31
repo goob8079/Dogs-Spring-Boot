@@ -10,7 +10,7 @@
 
         <h1>Create a new account</h1>
 
-        <form id="signupForm" th:object="${user}">
+        <form id="signupForm" th:action="@{/home/signup}" th:object="${user}" method="post">
             <div>
                 <label for="username">Username</label>
                 <input id="username" type="text" th:field="*{username}" placeholder="Enter a Username" required />
@@ -34,7 +34,7 @@
         <script>
             const submitBt = document.getElementById("signupForm");
             submitBt.addEventListener("submit", (event) => {
-                event.preventDefault();
+                // event.preventDefault();
 
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
@@ -53,7 +53,6 @@
                     .then(text => {
                         console.log("User created:", text);
                         alert("Signup successful");
-                        window.location.href = "/home/login";
                     })
                     .catch(error => {
                         console.error("Error:", error);
