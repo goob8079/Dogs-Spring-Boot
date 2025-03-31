@@ -29,40 +29,5 @@
             </div>
             <button type="submit">Sign Up</button>
         </form>
-        
-        <!-- I don't know JavaScript but this is required for the registration/signup logic -->
-        <script>
-            const submitBt = document.getElementById("signupForm");
-            submitBt.addEventListener("submit", (event) => {
-                // event.preventDefault();
-
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                const confirmPass = document.getElementById('passwordcon').value;
-                const email = document.getElementById('email').value;
-
-                if (password === confirmPass) {
-                    const data = { username, password, email };
-
-                    fetch('/home/signup', {
-                        method: 'POST',
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(data)
-                    })
-                    .then(response => response.text())
-                    .then(text => {
-                        console.log("User created:", text);
-                        alert("Signup successful");
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                        alert("Signup failed");
-                    });
-                } else {
-                    alert("Passwords do not match");
-                }
-            });
-        </script>
-
     </body>
 </html>
