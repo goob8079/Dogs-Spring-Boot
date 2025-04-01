@@ -39,4 +39,4 @@ This took way longer than expected to figure out but I fixed my issue.
 <h2>Current issue</h2>
 
 This time I'm restarting the whole process for login and registration, since the current tutorial I was following didn't work. 
-I will try to read the docs and use those instead.
+I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
