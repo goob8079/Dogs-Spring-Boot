@@ -18,6 +18,10 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Constraint(validatedBy = EmailValidator.class) | @Constraint is used to add a custom validation constraint. <br>Which I think means it uses the class specified by validatedBy to check for any error checking if it is included in that class?? | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L20-L21) |
 | @Documented | @Documented just defines an annotation and ensures that the custom annotation shows up in the JavaDoc | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L22-L23) |
 | Various Thymeleaf HTML formats | ${} indicates variable names. <br>*{} selects the child of the chosen object and injects it into the template file (HTML). <br>#{} brings externalized text (such as those in a .properties file) into the template file. | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/resources/templates/registration.html) |
+| @Component | Allows Spring to automatically detect and register custom beans | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/services/JwtAuthFilter.java#L5-L6) | 
+| @Data | Used by lombok, automatically adds getters and setters to a class | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L14-L15) |
+| @AllArgsConstructor and @NoArgsConstructor | Used by lombok, automatically creates a constructor for a classes | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L15-L16) | 
+
 
 # Issues
 
@@ -40,3 +44,8 @@ This took way longer than expected to figure out but I fixed my issue.
 
 This time I'm restarting the whole process for login and registration, since the current tutorial I was following didn't work. 
 I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
+
+# Extra notes
+The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).
+
+Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.
