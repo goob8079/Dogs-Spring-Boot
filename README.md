@@ -25,20 +25,30 @@ This is mainly just for me so I can keep better track of what classes, validator
 
 # Issues
 
-One major issues I've run into so far in this branch was getting two databases connected to this application. This could've been happening because I'm using Docker Compose, but i don't really know. 
-I kept getting the error:
-**java.lang.IllegalStateException: Cannot get a connection as the driver manager is not properly initialized.**
+1. One major issues I've run into so far in this branch was getting two databases connected to this application. This could've been happening because I'm using Docker Compose, but i don't really know.  
+I kept getting the error:  
+**java.lang.IllegalStateException: Cannot get a connection as the driver manager is not properly initialized.**  
+and also the error:  
+**Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling DriverManager.getConnection() [Access denied for user 'justice'@'%' (using password: NO)]**  
+So in order to fix these issues, I had to go into the Docker containers for each of the databases, and did the following:  
+    1. Go to Exec
+    2. type "mysql -u root -p" (no double quotes)
+    3. (If user is not created) type "CREATE USER 'justice'@'%' IDENTIFIED WITH 'password';" (no double quotes)
+    4. type "GRANT PIVILEGE ON *.* TO 'justice'@'%' WITH GRANT OPTION;" (no double quotes)
+This took way longer than expected to figure out but I fixed my issue.  
 
-and also the error: 
-**Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling DriverManager.getConnection() [Access denied for user 'justice'@'%' (using password: NO)]**
+2. Another issue I encountered was a cycle occured, with the error:  
 
-So in order to fix these issues, I had to go into the Docker containers for each of the databases, and did the following:
-1. Go to Exec
-2. type "mysql -u root -p" (no double quotes)
-3. (If user is not created) type "CREATE USER 'justice'@'%' IDENTIFIED WITH 'password';" (no double quotes)
-4. type "GRANT PIVILEGE ON *.* TO 'justice'@'%' WITH GRANT OPTION;" (no double quotes)
-
-This took way longer than expected to figure out but I fixed my issue. 
+> Description:
+>
+> The dependencies of some of the beans in the application context form a cycle:
+>
+> |  jwtAuthFilter defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\services\JwtAuthFilter.class]
+>
+> |  userInfoService (field private org.springframework.security.crypto.password.PasswordEncoder com.justice.dogs.services.UserInfoService.encoder)
+>
+> |  securityConfig defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\config\SecurityConfig.class]  
+To fix this issue, I had to define PasswordEncoder in a seperate class (CommonConfig) and that fixed the issue.
 
 <h2>Current issue</h2>
 
@@ -46,8 +56,7 @@ This time I'm restarting the whole process for login and registration, since the
 I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
 
 # Extra notes
-> The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).
->
->> Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.
+1. The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).
+    a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.
 
-> Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users.
+2. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users.
