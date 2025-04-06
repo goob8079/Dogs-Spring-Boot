@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.justice.dogs.services.AuthRequest;
 import com.justice.dogs.services.JwtService;
-import com.justice.dogs.services.UserService;
-import com.nimbusds.openid.connect.sdk.claims.UserInfo;
+import com.justice.dogs.services.UserInfoService;
+import com.justice.dogs.user.UserInfo;
 
 // this controller is used to retrieve the user information from a mysql database for OAuth2
 @RestController
@@ -21,7 +21,7 @@ import com.nimbusds.openid.connect.sdk.claims.UserInfo;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserInfoService service;
 
     @Autowired
     private JwtService jwtService;
