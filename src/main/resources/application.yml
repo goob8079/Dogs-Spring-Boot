@@ -39,3 +39,4 @@ logging:
 hibernate:
   hbm2ddl:
     auto: update
+  dialect: org.hibernate.dialect.MySQLDialect

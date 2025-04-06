@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -16,11 +17,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@PropertySource({ "classpath:application.properties" })
+@EnableTransactionManagement
+@PropertySource({ "classpath:application.yml" })
 @EnableJpaRepositories(
-    basePackages = "com.justice.dogs.users",
+    basePackages = "com.justice.dogs.user",
     entityManagerFactoryRef = "usersEntityManager",
     transactionManagerRef = "usersTransactionManager"
 )
@@ -29,17 +32,19 @@ public class UserDataAutoConfig {
     @Autowired
     private Environment env;
 
+    @Primary
     @Bean
     @ConfigurationProperties(prefix="users.datasource")
     public DataSource userDataSource() {
         return DataSourceBuilder.create().build();
     } 
 
+    @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean usersEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
-        em.setPackagesToScan(new String[] { "com.justice.dogs.users" });
+        em.setPackagesToScan(new String[] { "com.justice.dogs.user" });
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -55,6 +60,7 @@ public class UserDataAutoConfig {
         return em;
     }
 
+    @Primary
     @Bean
     public PlatformTransactionManager usersTransactionManager() {
         JpaTransactionManager usersTransactionManager = new JpaTransactionManager();

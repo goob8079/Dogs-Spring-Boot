@@ -1,4 +1,4 @@
-package com.justice.dogs.services;
+package com.justice.dogs.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

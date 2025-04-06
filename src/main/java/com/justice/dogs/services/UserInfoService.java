@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.justice.dogs.user.UserInfo;
-import com.justice.dogs.user.UserInfoDetails;
 import com.justice.dogs.user.UserRepo;
 
 @Service
@@ -31,6 +30,8 @@ public class UserInfoService implements UserDetailsService {
     }
 
     public String addUser(UserInfo userInfo) {
+        // automatically set the role of any new account to USER
+        userInfo.setRoles("ROLE_USER");
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         repo.save(userInfo);
         return "User has been successfully added";

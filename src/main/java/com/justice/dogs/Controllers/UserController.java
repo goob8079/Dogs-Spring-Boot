@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.justice.dogs.services.AuthRequest;
 import com.justice.dogs.services.JwtService;
 import com.justice.dogs.services.UserInfoService;
+import com.justice.dogs.user.AuthRequest;
 import com.justice.dogs.user.UserInfo;
 
 // this controller is used to retrieve the user information from a mysql database for OAuth2

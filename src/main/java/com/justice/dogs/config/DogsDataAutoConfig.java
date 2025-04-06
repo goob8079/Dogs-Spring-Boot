@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -19,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@PropertySource({ "classpath:application.properties" })
+@PropertySource({ "classpath:application.yml" })
 @EnableJpaRepositories(
     basePackages = "com.justice.dogs.dogsHolder",
     entityManagerFactoryRef = "dogsEntityManager",
@@ -31,14 +30,12 @@ public class DogsDataAutoConfig {
     private Environment env;
 
     @Bean
-    @Primary
     @ConfigurationProperties(prefix="dogs.datasource")
     public DataSource dogsDataSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    @Primary
     public LocalContainerEntityManagerFactoryBean dogsEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dogsDataSource());
@@ -60,7 +57,6 @@ public class DogsDataAutoConfig {
     }
 
     @Bean
-    @Primary
     public PlatformTransactionManager dogsTransactionManager() {
         JpaTransactionManager dogsTransactionManager = new JpaTransactionManager();
         dogsTransactionManager.setEntityManagerFactory(dogsEntityManager().getObject());
