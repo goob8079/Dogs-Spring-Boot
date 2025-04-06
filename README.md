@@ -38,16 +38,11 @@ So in order to fix these issues, I had to go into the Docker containers for each
 This took way longer than expected to figure out but I fixed my issue.  
 
 2. Another issue I encountered was a cycle occured, with the error:  
-> Description:
->
-> The dependencies of some of the beans in the application context form a cycle:
->
-> |  jwtAuthFilter defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\services\JwtAuthFilter.class]
->
-> |  userInfoService (field private org.springframework.security.crypto.password.PasswordEncoder com.justice.dogs.services.UserInfoService.encoder)
->
-> |  securityConfig defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\config\SecurityConfig.class]  
-<br>
+Description:  
+**The dependencies of some of the beans in the application context form a cycle:**  
+**|  jwtAuthFilter defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\services\JwtAuthFilter.class]**
+**|  userInfoService (field private org.springframework.security.crypto.password.PasswordEncoder com.justice.dogs.services.UserInfoService.encoder)**
+**|  securityConfig defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\config\SecurityConfig.class]**  
 To fix this issue, I had to define PasswordEncoder in a seperate class (CommonConfig) and that fixed the issue.
 
 <h2>Current issue</h2>
