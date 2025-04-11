@@ -1,3 +1,5 @@
+<!-- simplifies the logback, or whats displayed in the terminal upon running the application -->
+
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

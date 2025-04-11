@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,11 +18,12 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import jakarta.persistence.EntityManagerFactory;
+
 @Configuration
-@PropertySource({ "classpath:application.yml" })
 @EnableJpaRepositories(
     basePackages = "com.justice.dogs.dogsHolder",
-    entityManagerFactoryRef = "dogsEntityManager",
+    entityManagerFactoryRef = "dogsEntityManagerFactory",
     transactionManagerRef = "dogsTransactionManager"
 )
 public class DogsDataAutoConfig {
@@ -30,16 +32,16 @@ public class DogsDataAutoConfig {
     private Environment env;
 
     @Bean
-    @ConfigurationProperties(prefix="dogs.datasource")
+    @ConfigurationProperties(prefix = "dogs.datasource")
     public DataSource dogsDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean dogsEntityManager() {
+    @Bean(name = "dogsEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean dogsEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dogsDataSource());
-        em.setPackagesToScan(new String[] { "com.justice.dogs.dogsHolder" });
+        em.setPackagesToScan("com.justice.dogs.dogsHolder");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -56,10 +58,8 @@ public class DogsDataAutoConfig {
         return em;
     }
 
-    @Bean
-    public PlatformTransactionManager dogsTransactionManager() {
-        JpaTransactionManager dogsTransactionManager = new JpaTransactionManager();
-        dogsTransactionManager.setEntityManagerFactory(dogsEntityManager().getObject());
-        return dogsTransactionManager;
+    @Bean(name = "dogsTransactionManager")
+    public PlatformTransactionManager dogsTransactionManager(@Qualifier("dogsEntityManagerFactory") EntityManagerFactory factory) {
+        return new JpaTransactionManager(factory);
     }
 }

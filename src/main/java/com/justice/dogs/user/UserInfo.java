@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// a class to store all a user's information
 @Entity
 @Data
 @AllArgsConstructor

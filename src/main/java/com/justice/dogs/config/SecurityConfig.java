@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/home", "/home/dogslist", "/home/dogtypes", "/home/pibbletypes",
                                 "/home/auth", "/home/auth/addUser", "/home/auth/tokenGeneration", 
                                 "/css/**", "/img/**").permitAll()
-                // endpoints for roles
+                // endpoints for roles (role checks)
                 .requestMatchers("/home/auth/users/**").hasAnyAuthority("ROLE_USER")
                 .requestMatchers("/home/auth/admin/**").hasAnyAuthority("ROLE_ADMIN")
                 // any other endpoint not listed requires authentication

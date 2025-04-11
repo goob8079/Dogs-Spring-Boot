@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -19,12 +20,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import jakarta.persistence.EntityManagerFactory;
+
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:application.yml" })
 @EnableJpaRepositories(
     basePackages = "com.justice.dogs.user",
-    entityManagerFactoryRef = "usersEntityManager",
+    entityManagerFactoryRef = "usersEntityManagerFactory",
     transactionManagerRef = "usersTransactionManager"
 )
 public class UserDataAutoConfig {
@@ -34,20 +36,21 @@ public class UserDataAutoConfig {
 
     @Primary
     @Bean
-    @ConfigurationProperties(prefix="users.datasource")
+    @ConfigurationProperties(prefix = "users.datasource")
     public DataSource userDataSource() {
         return DataSourceBuilder.create().build();
     } 
 
     @Primary
-    @Bean
-    public LocalContainerEntityManagerFactoryBean usersEntityManager() {
+    @Bean(name = "usersEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean usersEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
-        em.setPackagesToScan(new String[] { "com.justice.dogs.user" });
+        em.setPackagesToScan("com.justice.dogs.user");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
+
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
@@ -61,10 +64,8 @@ public class UserDataAutoConfig {
     }
 
     @Primary
-    @Bean
-    public PlatformTransactionManager usersTransactionManager() {
-        JpaTransactionManager usersTransactionManager = new JpaTransactionManager();
-        usersTransactionManager.setEntityManagerFactory(usersEntityManager().getObject());
-        return usersTransactionManager;
+    @Bean(name = "usersTransactionManager")
+    public PlatformTransactionManager usersTransactionManager(@Qualifier("usersEntityManagerFactory") EntityManagerFactory factory) {
+        return new JpaTransactionManager(factory);
     }
 }

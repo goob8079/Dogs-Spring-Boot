@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.justice.dogs.user.UserInfo;
 
+// used to retrieve data (username, password, roles) for UserInfo objects
 public class UserInfoDetails implements UserDetails {
 
     private String username, password;
@@ -24,6 +25,7 @@ public class UserInfoDetails implements UserDetails {
                                 .collect(Collectors.toList());
     }
 
+    // returns a list that contains any class implementing GrantedAuthority
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

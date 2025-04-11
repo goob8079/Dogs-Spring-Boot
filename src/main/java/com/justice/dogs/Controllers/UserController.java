@@ -34,6 +34,8 @@ public class UserController {
         return service.addUser(userInfo);
     }
 
+    // There are no role checks because they are already managed in SecurityConfig
+
     @PostMapping("/home/auth/tokenGeneration")
     public String authenticationAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(
