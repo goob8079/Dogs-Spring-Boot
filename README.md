@@ -1,4 +1,4 @@
-<h1> Currently working in a different branch (basic-login branch).</h1>
+<h1> Currently working in a different branch (basic-login-branch).</h1>
 
 Trying to make a backend for a website to display different dogs and such
 Front-end will be made with Thymeleaf and HTML at the moment
