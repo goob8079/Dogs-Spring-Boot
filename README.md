@@ -1,3 +1,4 @@
+<h1> At the moment, taking a break from working on this website to learn more HTML, CSS, and JavaScript. </h1>
 <h1>Trying to make a basic login page and registration form</h1>
 
 The website will include a backend for a website to display different dogs and such.
