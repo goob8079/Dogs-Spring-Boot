@@ -1,3 +1,7 @@
+:root {
+    --main-color: rgb(235, 145, 28);
+}
+
 * {
     font-size: 30px;
 }
@@ -14,18 +18,18 @@ body>h1 {
     margin: auto;
     width: 41%;
     background-color: black;
-    color: rgb(235, 145, 28);
+    color: var(--main-color, white);
 }
 
 div {
     margin: auto;
     padding: 10px;
     background-color: black;
-    color: rgb(235, 145, 28);
+    color: var(--main-color, white);
     width: 40%;
 }
 
 #add-dogBt {
     padding: 10px;
-    color: rgb(235, 145, 28);
+    color: var(--main-color, white);
 }
