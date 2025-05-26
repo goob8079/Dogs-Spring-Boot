@@ -1,3 +1,8 @@
+:root {
+    --pic-padding: 10px;
+    --pf-size: 20px; /* pibble font size */
+}
+
 .header1 {
     margin: auto;
     text-align: center;
@@ -63,9 +68,9 @@ the description of what it is appears */
 #pibble-name:hover + #hidden-pibble {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 250px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blue;
     background-color: white;
@@ -93,9 +98,9 @@ the description of what it is appears */
 #gmail-name:hover + #hidden-gmail {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 150px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blue;
     background-color: white;
@@ -123,9 +128,9 @@ the description of what it is appears */
 #washington-name:hover + #hidden-washington {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 200px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blue;
     background-color: white;
@@ -153,9 +158,9 @@ the description of what it is appears */
 #geeble-name:hover + #hidden-geeble {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 200px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blanchedalmond;
     background-color: black;
@@ -183,9 +188,9 @@ the description of what it is appears */
 #bagel-name:hover + #hidden-bagel {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 150px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blanchedalmond;
     background-color: black;
@@ -213,9 +218,9 @@ the description of what it is appears */
 #football-name:hover + #hidden-football {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 150px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: blanchedalmond;
     background-color: black;
@@ -243,9 +248,9 @@ the description of what it is appears */
 #pebble-name:hover + #hidden-pebble {
     margin: auto;
     text-align: center;
-    padding: 10px;
+    padding: var(--pic-padding);
     width: 150px;
-    font-size: 20px;
+    font-size: var(--pf-size);
     display: block;
     color: black;
     background-color: darkseagreen;
