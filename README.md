@@ -1,3 +1,4 @@
+<h1> At the moment, taking a break from working on this website to learn more HTML, CSS, and JavaScript. </h1>
 <h1>Trying to make a basic login page and registration form</h1>
 
 The website will include a backend for a website to display different dogs and such.
@@ -51,7 +52,7 @@ This time I'm restarting the whole process for login and registration, since the
 I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
 
 # Extra notes
-1. The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).
+1. The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).<br>
     a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.
 
 2. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users.
