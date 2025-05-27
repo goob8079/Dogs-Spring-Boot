@@ -7,12 +7,12 @@
     </head>
     <tbody>
         <h1>Create an account</h1>
-        <form th:action="@{/home/auth/newUser}" method="post">
+        <form id="registrationForm" th:action="@{/home/auth/newUser}" method="post">
             <div th:text="${successMsg}">
 
             </div>
             
-            <div class="form-info">
+            <div>
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text" placeholder="Username">
             </div>

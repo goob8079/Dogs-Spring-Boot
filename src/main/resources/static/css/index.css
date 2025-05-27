@@ -1,3 +1,7 @@
+:root {
+    --gl-padding: 10px;
+}
+
 h1 {
     margin: auto;
     position: absolute;
@@ -8,7 +12,7 @@ h1 {
 
 #login-page {
     margin: auto;
-    padding: 10px;
+   padding: var(--gl-padding);
     font-size: 20px;
     position: absolute;
     top: 0%;
@@ -17,7 +21,7 @@ h1 {
 
 #registration-page {
     margin: auto;
-    padding: 10px;
+   padding: var(--gl-padding);
     font-size: 20px;
     position: absolute;
     top: 4%;
@@ -27,21 +31,21 @@ h1 {
 #dogs-list {
     font-size: 20px;
     margin: auto;
-    padding: 10px;
+   padding: var(--gl-padding);
     text-decoration: none;
 }
 
 #dog-types {
     font-size: 30px;
     margin: auto;
-    padding: 10px;
+   padding: var(--gl-padding);
     text-decoration: none;
 }
 
 #pibble-types {
     font-size: 40px;
     margin: auto;
-    padding: 10px;
+   padding: var(--gl-padding);
     text-decoration: none;
 }
 
@@ -60,12 +64,11 @@ h1 {
 .subpages-container > div {
     text-align: center;
     display: table-row;
-}
+} */
 
 .subpages-container > a {
     display: table-cell;
     vertical-align: middle;
-
 }
 
 /* This block allows the dog image to spin */
@@ -74,15 +77,11 @@ h1 {
     border-radius: 50%;
     animation: animate 1s linear infinite;
     perspective: 500px;
-}
 
-img {
-    height: 200px;
-    width: 200px;
-}
-
-body {
-    background-image: none;
+    img {
+        height: 200px;
+        width: 200px;
+    }
 }
 
 /* @keyframes allows for the control of an animation sequence in steps */

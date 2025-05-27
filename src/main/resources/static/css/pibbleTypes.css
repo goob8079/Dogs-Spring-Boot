@@ -1,6 +1,10 @@
+/* this is used for setting global variables
+which can be used all throughout the css file */
 :root {
-    --pic-padding: 10px;
+    --desc-padding: 10px;
     --pf-size: 20px; /* pibble font size */
+    ---pib-size: 30px; /* piible paragraph font size */
+    --pib-padding: 15px;
 }
 
 .header1 {
@@ -44,216 +48,244 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
 /* to set automatic margins and padding for the type-pibble div */
 .type-pibble {
     margin: auto;
-    padding: 15px;
-}
-/* to set the size and margin for the text that says "Pibble" */
-.type-pibble > p {
-    font-size: 30px;
-    margin: 0;
-}
-/* this line selects the paragraphs that are located 
-under the img element located within the type-pibble class */
-.type-pibble > img ~ p {
-    text-align: center;
-}
-/* to hide the description of what a pibble is */
-#hidden-pibble {
-    display: none;
-}
-#pibble-name {
-    text-decoration: underline;
-}
-/* this is so that whenever the user hovers over the "Pibble" text
-the description of what it is appears */
-#pibble-name:hover + #hidden-pibble {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 250px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+    padding: var(--pib-padding);
+
+    /* to set the size and margin for the text that says "Pibble" */
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    /* this line selects the paragraphs that are located 
+    under the img element located within the type-pibble class */
+    img ~ p {
+        text-align: center;
+    }
+
+    /* to hide the description of what a pibble is */
+    #hidden-pibble {
+        display: none;
+    }
+    #pibble-name {
+        text-decoration: underline;
+    }
+
+    /* this is so that whenever the user hovers over the "Pibble" text
+    the description of what it is appears */
+    #pibble-name:hover + #hidden-pibble {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 250px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blue;
+        background-color: white;
+        border: 2px outset;
+        border-color: gray;
+    }
 }
 
 .type-gmail {
     margin: auto;
-    padding: 15px;
-}
-.type-gmail > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-gmail > img ~ p {
-    text-align: center;
-}
-#hidden-gmail {
-    display: none;
-}
-#gmail-name {
-    text-decoration: underline;
-}
-#gmail-name:hover + #hidden-gmail {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 150px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;  
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+
+    #hidden-gmail {
+        display: none;
+    }
+    #gmail-name {
+        text-decoration: underline;
+    }
+    
+    #gmail-name:hover + #hidden-gmail {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 150px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blue;
+        background-color: white;
+        border: 2px outset;
+        border-color: gray;
+    }
 }
 
 .type-washington {
     margin: auto;
-    padding: 15px;
-}
-.type-washington > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-washington > img ~ p {
-    text-align: center;
-}
-#hidden-washington {
-    display: none;
-}
-#washington-name {
-    text-decoration: underline;
-}
-#washington-name:hover + #hidden-washington {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 200px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+
+    #hidden-washington {
+        display: none;
+    }
+    #washington-name {
+        text-decoration: underline;
+    }
+    
+    #washington-name:hover + #hidden-washington {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 200px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blue;
+        background-color: white;
+        border: 2px outset;
+        border-color: gray;
+    }
 }
 
 .type-geeble {
     margin: auto;
-    padding: 15px;
-}
-.type-geeble > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-geeble > img ~ p {
-    text-align: center;
-}
-#hidden-geeble {
-    display: none;
-}
-#geeble-name {
-    text-decoration: underline;
-}
-#geeble-name:hover + #hidden-geeble {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 200px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+
+    #hidden-geeble {
+        display: none;
+    }
+    #geeble-name {
+        text-decoration: underline;
+    }
+    
+    #geeble-name:hover + #hidden-geeble {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 200px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blanchedalmond;
+        background-color: black;
+        border: 2px double;
+        border-color: burlywood;
+    }
 }
 
 .type-bagel {
     margin: auto;
-    padding: 15px;
-}
-.type-bagel > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-bagel > img ~ p {
-    text-align: center;
-}
-#hidden-bagel {
-    display: none;
-}
-#bagel-name {
-    text-decoration: underline;
-}
-#bagel-name:hover + #hidden-bagel {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 150px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+    
+    #hidden-bagel {
+        display: none;
+    }
+    #bagel-name {
+        text-decoration: underline;
+    }
+    
+    #bagel-name:hover + #hidden-bagel {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 150px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blanchedalmond;
+        background-color: black;
+        border: 2px double;
+        border-color: burlywood;
+    }
 }
 
 .type-football {
     margin: auto;
-    padding: 15px;
-}
-.type-football > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-football > img ~ p {
-    text-align: center;
-}
-#hidden-football {
-    display: none;
-}
-#football-name {
-    text-decoration: underline;
-}
-#football-name:hover + #hidden-football {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 150px;
-    font-size: var(--pf-size);
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+    
+    #hidden-football {
+        display: none;
+    }
+    #football-name {
+        text-decoration: underline;
+    }
+    
+    #football-name:hover + #hidden-football {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 150px;
+        font-size: var(--pf-size);
+        display: block;
+        color: blanchedalmond;
+        background-color: black;
+        border: 2px double;
+        border-color: burlywood;
+    }
 }
 
 .type-pebble {
     margin: auto;
-    padding: 15px;
+    padding: var(--pib-padding);
+
+    p {
+        font-size: var(---pib-size);
+        margin: 0;
+    }
+
+    img ~ p {
+        text-align: center;
+    }
+    #hidden-pebble {
+        display: none;
+    }
+    #pebble-name {
+        text-decoration: underline;
+    }
+    
+    #pebble-name:hover + #hidden-pebble {
+        margin: auto;
+        text-align: center;
+        padding: var(--desc-padding);
+        width: 150px;
+        font-size: var(--pf-size);
+        display: block;
+        color: black;
+        background-color: darkseagreen;
+        border: 2px double;
+        border-color: plum;
+    }
 }
-.type-pebble > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-pebble > img ~ p {
-    text-align: center;
-}
-#hidden-pebble {
-    display: none;
-}
-#pebble-name {
-    text-decoration: underline;
-}
-#pebble-name:hover + #hidden-pebble {
-    margin: auto;
-    text-align: center;
-    padding: var(--pic-padding);
-    width: 150px;
-    font-size: var(--pf-size);
-    display: block;
-    color: black;
-    background-color: darkseagreen;
-    border: 2px double;
-    border-color: plum;
-}
+
