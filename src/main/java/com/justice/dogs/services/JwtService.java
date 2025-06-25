@@ -52,7 +52,7 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // extracts the expiration tiemstamp from the token
+    // extracts the expiration timestamp from the token
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
@@ -63,7 +63,7 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    // fully parses the toke and retrives all claims in the payload
+    // fully parses the token and retrives all claims in the payload
     private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
             .setSigningKey(getSignKey())
@@ -77,7 +77,7 @@ public class JwtService {
         return extractExpiration(token).before(new Date());
     }
 
-    // compared the extracted usernname from the token with the user's actual username,
+    // compared the extracted username from the token with the user's actual username,
     // also checks if the token is not expired
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
