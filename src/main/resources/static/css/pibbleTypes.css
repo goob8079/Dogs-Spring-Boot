@@ -35,49 +35,24 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
     border: 4px solid; border-color: black;
 }
 
-.type-gmail,
-.type-washington,
-.type-geeble,
-.type-bagel,
-.type-football,
-.type-pebble {
+.type-container {
     margin: auto; padding: 15px;
 }
 
-.type-gmail > p,
-.type-washington > p,
-.type-geeble > p,
-.type-bagel > p,
-.type-football,
-.type-pebble {
+.type-container > p {
     font-size: 30px;
     margin: 0;
 }
 
-.type-gmail > img ~ p,
-.type-washington > img ~ p,
-.type-geeble > img ~ p,
-.type-bagel> img ~ p,
-.type-football > img ~ p,
-.type-pebble > img ~ p {
+.type-container > img ~ p {
     text-align: center;
 }
 
-#hidden-gmail,
-#hidden-washington,
-#hidden-geeble,
-#hidden-bagel,
-#hidden-football,
-#hidden-pebble {
+.hidden-desc {
     display: none;
 }
 
-#gmail-name,
-#washington-name,
-#geeble-name,
-#bagel-name,
-#football-name,
-#pebble-name {
+.pib-name {
     text-decoration: underline;
 }
 

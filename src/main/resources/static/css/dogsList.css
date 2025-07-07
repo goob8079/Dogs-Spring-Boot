@@ -3,55 +3,43 @@
 }
 
 div.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
 }
 
 div > h1 {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    color: white;
-    background-color: black;
-    border: 2px solid rgb(255, 3, 108);
-    border-radius: 5px;
+    margin: auto; padding: 10px;
     width: 20%;
+    text-align: center;
+    color: white; background-color: black;
+    border: 2px solid rgb(255, 3, 108); border-radius: 5px;
 }
 
 p {
-    margin: auto;
+    margin: auto; padding: 20px;
     text-align: center;
-    padding: 20px;
 }
 
 /* for the "Add a new dog" link */
 #new-dog-link {
     padding: 10px;
-    color: white;
-    background-color: black;
     width: auto;
+    color: white; background-color: black;
     border: 1px solid rgb(255, 3, 108);
 }
 
 #homepage-link {
     padding: 10px;
-    color: green;
-    background-color: white;
     width: auto;
+    color: green; background-color: white;
     border: 4px solid black;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: fixed; top: 0; left: 0;
 }
 
 table, th, td {
     margin: auto;
     text-align: center;
-    border: 1px solid rgb(255, 3, 108);
-    border-radius: 5px;
-    color: white;
-    background-color: black;
+    border: 1px solid rgb(255, 3, 108); border-radius: 5px;
+    color: white; background-color: black;
 }
 
 body {

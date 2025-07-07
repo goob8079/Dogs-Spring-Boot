@@ -4,71 +4,53 @@
 
 h1 {
     margin: auto;
-    position: absolute;
+    position: absolute; top: 30%;
     text-align: center;
-    top: 30%;
     width: 100%;
 }
 
 #login-page {
-    margin: auto;
-   padding: var(--gl-padding);
+    margin: auto; padding: var(--gl-padding);
     font-size: 20px;
-    position: absolute;
-    top: 0%;
-    right: 2%;
+    position: absolute; top: 0%; right: 2%;
 }
 
 #registration-page {
-    margin: auto;
-   padding: var(--gl-padding);
+    margin: auto; padding: var(--gl-padding);
     font-size: 20px;
-    position: absolute;
-    top: 4%;
-    right: 2%;
+    position: absolute; top: 4%; right: 2%;
 }
 
 #dogs-list {
-    font-size: 20px;
-    margin: auto;
-   padding: var(--gl-padding);
-    text-decoration: none;
+    font-size: 20px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 #dog-types {
-    font-size: 30px;
-    margin: auto;
-   padding: var(--gl-padding);
-    text-decoration: none;
+    font-size: 30px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 #pibble-types {
-    font-size: 40px;
-    margin: auto;
-   padding: var(--gl-padding);
-    text-decoration: none;
+    font-size: 40px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 .subpages-container {
     margin: auto;
-    position: absolute;
-    top: 40%;
+    position: absolute; top: 40%;
     width: auto;
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    display: table; table-layout: fixed;
+    -moz-box-sizing: border-box; box-sizing: border-box;
 }
 
 .subpages-container > div {
     text-align: center;
     display: table-row;
-} */
+} 
 
 .subpages-container > a {
-    display: table-cell;
-    vertical-align: middle;
+    display: table-cell; vertical-align: middle;
 }
 
 /* This block allows the dog image to spin */

@@ -18,7 +18,6 @@ import com.justice.dogs.user.AuthRequest;
 import com.justice.dogs.user.UserInfo;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
