@@ -7,13 +7,15 @@
     </head>
     <tbody>
         <h1>Welcome to the homepage!</h1>
-        <p><a th:href="@{/home/auth/newUser}">Create Account</a></p>
-        <p><a th:href="@{/home/auth/login}">Login</a></p>
+        <p><a id="registration-page" th:href="@{/home/auth/newUser}">Create Account</a></p>
+        <p><a id="login-page" th:href="@{/home/auth/login}">Login</a></p>
+
         <div class="subpages-container">
             <div><p><a id="dogs-list" th:href="@{/home/dogslist}">Go to dogs list</a></p></div>
             <div><p><a id="dog-types" th:href="@{/home/dogtypes}">Go to dog types</a></p></div>
             <div><p><a id="pibble-types" th:href="@{/home/pibbletypes}">Go to pibble types</a></p><div>
         </div>
+
         <div class="doggy">
             <img id="silly-dog" th:src="@{img/silly_white_dog.jpg}" alt="silly white dog">
         </div>

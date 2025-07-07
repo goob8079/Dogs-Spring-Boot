@@ -43,7 +43,7 @@ public class SecurityConfig {
             .authorizeHttpRequests((requests) -> requests
                 // public endpoints (accessible by anyone)
                 .requestMatchers("/", "/home", "/home/dogslist", "/home/dogtypes", "/home/pibbletypes",
-                                "/home/auth", "/home/auth/newUser", "/home/auth/tokenGeneration", 
+                                "/home/auth", "/home/auth/newUser", "/home/auth/tokenGeneration", "/home/auth/login",
                                 "/css/**", "/img/**").permitAll()
                 // endpoints for roles (role checks)
                 .requestMatchers("/home/auth/users/**").hasAnyAuthority("ROLE_USER")

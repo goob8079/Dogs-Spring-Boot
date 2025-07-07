@@ -35,40 +35,6 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
     border: 4px solid; border-color: black;
 }
 
-/* to set automatic margins and padding for the type-pibble div */
-.type-pibble {
-    margin: auto; padding: 15px;
-}
-/* to set the size and margin for the text that says "Pibble" */
-.type-pibble > p {
-    font-size: 30px;
-    margin: 0;
-}
-/* this line selects the paragraphs that are located 
-under the img element located within the type-pibble class */
-.type-pibble > img ~ p {
-    text-align: center;
-}
-/* to hide the description of what a pibble is */
-#hidden-pibble {
-    display: none;
-}
-#pibble-name {
-    text-decoration: underline;
-}
-/* this is so that whenever the user hovers over the "Pibble" text
-the description of what it is appears */
-#pibble-name:hover + #hidden-pibble {
-    margin: auto;
-    text-align: center;
-    padding: var(--pibbles-padding);
-    width: 250px;
-    font-size: 20px;
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset; border-color: gray;
-}
 
 .type-gmail,
 .type-washington,
@@ -114,6 +80,19 @@ the description of what it is appears */
 #football-name,
 #pebble-name {
     text-decoration: underline;
+}
+
+#pibble-name:hover + #hidden-pibble {
+    margin: auto;
+    text-align: center;
+    padding: var(--pibbles-padding);
+    width: 250px;
+    font-size: 20px;
+    display: block;
+    color: blue;
+    background-color: white;
+    border: 2px outset;
+    border-color: gray;
 }
 
 #gmail-name:hover + #hidden-gmail {

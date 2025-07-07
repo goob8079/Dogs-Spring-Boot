@@ -8,7 +8,7 @@ div.center {
     align-items: center;
 }
 
-div>h1 {
+div > h1 {
     margin: auto;
     text-align: center;
     padding: 10px;
