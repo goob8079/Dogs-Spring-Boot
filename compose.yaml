@@ -2,24 +2,42 @@ services:
   mysql:
     container_name: dogs-mysql
     image: mysql
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: dogsdb
-      MYSQL_ROOT_PASSWORD: password123
-      MYSQL_PASSWORD: secret
-      MYSQL_USER: justice
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
     ports:
-      - 3308:3306
+      - "3308:3306"
+    volumes:
+      - dogs-db:/var/lib/mysql
+    networks:
+      - backend
     
   mysql2:
     container_name: users-mysql
     image: mysql
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: usersdb
-      MYSQL_ROOT_PASSWORD: password123
-      MYSQL_PASSWORD: secret
-      MYSQL_USER: justice
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
     ports:
-      - 3307:3306
+      - "3307:3306"
+    volumes:
+      - users-db:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  dogs-db:
+  users-db:
+
+networks:
+  backend:
+    driver: bridge
     
 
 # allows docker to connect to a MySQL database within the program
