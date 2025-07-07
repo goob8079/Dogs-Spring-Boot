@@ -35,7 +35,7 @@ So in order to fix these issues, I had to go into the Docker containers for each
     1. Go to Exec
     2. type "mysql -u root -p" (no double quotes)
     3. (If user is not created) type "CREATE USER 'justice'@'%' IDENTIFIED WITH 'password';" (no double quotes)
-    4. type "GRANT PIVILEGE ON *.* TO 'justice'@'%' WITH GRANT OPTION;" (no double quotes)<br>
+    4. type "GRANT ALL PRIVILEGE ON \*.\* TO 'justice0'@'%' WITH GRANT OPTION;" (no double quotes)<br>
 This took way longer than expected to figure out but I fixed my issue.  
 
 2. Another issue I encountered was a cycle occured, with the error:  
