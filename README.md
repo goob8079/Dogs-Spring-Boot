@@ -56,6 +56,6 @@ I will try to read the docs and use those instead. Likely going to try implement
     a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.<br/>
     b. (Personal Note) OAUTH and JWT are used for authentication and authorization, meaning they are meant to be used after a user has created and registered an account.
 
-3. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users. Most likely what will be done is implementing an email system for registration and/or allowing logging in through other accounts/websites such as Google and Github.
+3. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users. Most likely what will be implemented is an email system for registration and/or allowing logging in through other accounts/websites such as Google and Github.
 
 4. When storing a secret key for JWT authentication, the best way to store it would be using a vault like AWS Secret Manager. However, at the moment I will store it within an .env file, since it is more secure than storing it within a class in the application.
