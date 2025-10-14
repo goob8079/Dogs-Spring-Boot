@@ -59,3 +59,5 @@ I will try to read the docs and use those instead. Likely going to try implement
 3. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users. Most likely what will be implemented is an email system for registration and/or allowing logging in through other accounts/websites such as Google and Github.
 
 4. When storing a secret key for JWT authentication, the best way to store it would be using a vault like AWS Secret Manager. However, at the moment I will store it within an .env file, since it is more secure than storing it within a class in the application.
+
+5. IGNORE 3 and 4; I think I will just try to figure out a way to let users login through Google and Github only, instead of creating a registration page and using JWT. 
