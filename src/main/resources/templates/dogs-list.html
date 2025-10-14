@@ -32,7 +32,7 @@
             </table>
             
         </div>
-        <p><a id="new-dog-link" href="/dogs/newdog">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
-        <p><a id="homepage-link" href="/home">Go to homepage</a></p>
+        <p><a id="new-dog-link" th:href="@{/dogs/newdog}">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
+        <p><a id="homepage-link" th:href="@{/home}">Homepage</a></p>
     </div>  
 </html>

@@ -3,7 +3,7 @@
     <head>
         <title>Pibble Types</title>
         <link rel="stylesheet" th:href="@{/css/pibbleTypes.css}">
-        <script th:src="@{/js/hidden-pibble.js}" defer="defer"></script>
+        
     </head>
     <tbody>
         <p><a id="homepage-link" th:href="@{/home}">Homepage</a></p>
@@ -13,52 +13,92 @@
         </div>
         
         <div class="pibble-container1">
+
             <div class="type-container">
                 <img th:src="@{/img/Pibble_origin.png}" alt="Pibble">
-                <button class="pib-name" id="pibble-name">Pibble</button>
-                <div class="hidden-desc" id="hidden-pibble">
-                    <span class="close">&times;</span>
-                    <p>Pibbles are tan/brown frenchie puppies. However, pibbles are a general classification, so all colors are considered pibbles.</p>
+                <button class="pib-name">Pibble</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Pibbles are tan/brown frenchie puppies. However, pibbles are a general classification, so all colors are considered pibbles.</p>
+                    </div>
                 </div>
             </div>
+
             <div class="type-container">
                 <img th:src="@{/img/gmail.png}" alt="Gmail">
-                <p class="pib-name" id="gmail-name">Gmail</p>
-                <p class="hidden-desc" id="hidden-gmail">Gmails are white frenchie puppies with black spots on their eyes.</p>
+                <button class="pib-name">Gmail</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Gmails are white frenchie puppies with black spots on their eyes.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="type-container">
-                <img th:src="@{/img/washington.png}" alt="Washington">
-                <p class="pib-name" id="washington-name">Washington</p>
-                <p class="hidden-desc" id="hidden-washington">Washingtons are pibbles that are being washed and can be any color. However, any black pibble is a Washington.</p>
+                <img th:src="@{/img/washington.png}" alt="Washington">                
+                <button class="pib-name">Washington</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Washingtons are pibbles that are being washed and can be any color. However, any black pibble is a Washington.</p>
+                    </div>
+                </div>
             </div>
+
         </div>
-        
+
         <div class="pibble-container2">
+
             <div class="type-container">
                 <img th:src="@{/img/geeble.png}" alt="Geeble">
-                <p class="pib-name" id="geeble-name">Geeble</p>
-                <p class="hidden-desc" id="hidden-geeble">Geebles are an alien pibble race. They are usually peaceful, however will abduct pibbles at times and convert them into Geebles.</p>
+                <button class="pib-name">Geeble</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Geebles are an alien pibble race. They are usually peaceful, however will abduct pibbles at times and convert them into Geebles.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="type-container">
                 <img th:src="@{/img/bagel.png}" alt="Bagel">
-                <p class="pib-name" id="bagel-name">Bagel</p>
-                <p class="hidden-desc" id="hidden-bagel">Bagels are golden retriever puppies. Usually light brown or blonde.</p>
+                <button class="pib-name">Bagel</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Bagels are golden retriever puppies. Usually light brown or blonde.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="type-container">
                 <img th:src="@{/img/football.png}" alt="Football">
-                <p class="pib-name" id="football-name">Football</p>
-                <p class="hidden-desc" id="hidden-football">Footballs are frenchie puppies with a brown, white, and black coat.</p>
-            </div>
-        </div>
-        
-        <div class="pibble-container3">
-            <div class="type-container">
-                <img th:src="@{/img/pebble.png}" alt="Pebble">
-                <p class="pib-name" id="pebble-name">Pebble</p>
-                <p class="hidden-desc" id="hidden-pebble">Pebbles are adult pibbles</p>
+                <button class="pib-name">Football</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Footballs are frenchie puppies with a brown, white, and black coat.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div class="pibble-container3">
+
+            <div class="type-container">
+                <img th:src="@{/img/pebble.png}" alt="Pebble">
+                <button class="pib-name">Pebble</button>
+                <div class="hidden-desc">
+                    <div class="desc-content">
+                        <span class="close">&times;</span>
+                        <p>Pebbles are adult pibbles.</p>
+                    </div>
+                </div>
+            </div>
+
+        <script th:src="@{/js/hidden-pibble.js}"></script>
     </tbody>
     
 </html>

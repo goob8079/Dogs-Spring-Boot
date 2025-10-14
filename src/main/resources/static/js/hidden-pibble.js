@@ -1,23 +1,23 @@
-const hiddenDesc = document.querySelector('.hidden-desc');
-const pibBtn = document.querySelector('.pib-name');
-const closeBtn = document.querySelector('.close');
+const hiddenDescs = document.querySelectorAll('.hidden-desc');
+const pibBtns = document.querySelectorAll('.pib-name');
+const closeBtn = document.querySelectorAll('.close');
 
-pibBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+pibBtns.forEach((btn, index) => {
+    const modal = hiddenDescs[index];
+    const close = closeBtn[index];
 
-    hiddenDesc.style.display = 'block';
-});
+    btn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
 
-closeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    hiddenDesc.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-    e.preventDefault();
+    close.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
     
-    if (e.target == hiddenDesc) {
-        hiddenDesc.style.display = 'none';
-    }
+    window.addEventListener('click', (e) => {        
+        if (e.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
 });
+
