@@ -4,11 +4,16 @@
 }
 
 .header1 {
-    margin: auto;
-    text-align: center;
-    width: 180px;
-    border: 2px dashed;
-    border-color: blue;
+    padding: 10px;
+    width: 100%;
+    display: flex; justify-content: center; align-items: center;
+    
+    h1 {
+        text-align: center;
+        height: 50px; width: 20%;
+        border: 2px dashed; border-color: blue;
+        display: flex; justify-content: center; align-items: center;
+    }
 }
 
 /* Allows the user to scroll down past the last div element even if there
@@ -29,7 +34,7 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
 }
 
 #homepage-link {
-    position: fixed; top: 0%; left: 0%;
+    position: sticky; top: 0%; left: 0%;
     margin: auto; padding: 5px;
     font-size: 25px;
     border: 4px solid; border-color: black;
@@ -56,7 +61,7 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
     text-decoration: underline;
 }
 
-#pibble-name:hover + #hidden-pibble {
+/* #pibble-name:hover + #hidden-pibble {
     margin: auto;
     text-align: center;
     padding: var(--pibbles-padding);
@@ -67,7 +72,7 @@ any time the cursor is over the names of one of the pibbles, it causes everythin
     background-color: white;
     border: 2px outset;
     border-color: gray;
-}
+} */
 
 #gmail-name:hover + #hidden-gmail {
     margin: auto;

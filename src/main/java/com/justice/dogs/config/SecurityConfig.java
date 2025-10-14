@@ -42,8 +42,10 @@ public class SecurityConfig {
             // /css/** and /img/** need to be added to allow the css templates and images to load
             .authorizeHttpRequests((requests) -> requests
                 // public endpoints (accessible by anyone)
-                .requestMatchers("/", "/home", "/home/dogslist", "/home/dogtypes", "/home/pibbletypes",
+                .requestMatchers("/", "/home", "/dogs/dogslist", "/dogs/dogtypes", "/dogs/pibbletypes",
                                 "/home/auth", "/home/auth/newUser", "/home/auth/tokenGeneration", "/home/auth/login",
+                                "/dogs/newdog",
+                                "/js/hidden-pibble.js",
                                 "/css/**", "/img/**").permitAll()
                 // endpoints for roles (role checks)
                 .requestMatchers("/home/auth/users/**").hasAnyAuthority("ROLE_USER")

@@ -6,14 +6,14 @@
         <link rel="stylesheet" th:href="@{/css/index.css}">
     </head>
     <tbody>
-        <h1>Welcome to the homepage!</h1>
         <p><a id="registration-page" th:href="@{/home/auth/newUser}">Create Account</a></p>
         <p><a id="login-page" th:href="@{/home/auth/login}">Login</a></p>
+        <h1>Welcome to the homepage!</h1>
 
         <div class="subpages-container">
-            <div><p><a id="dogs-list" th:href="@{/home/dogslist}">Go to dogs list</a></p></div>
-            <div><p><a id="dog-types" th:href="@{/home/dogtypes}">Go to dog types</a></p></div>
-            <div><p><a id="pibble-types" th:href="@{/home/pibbletypes}">Go to pibble types</a></p><div>
+            <div><p><a id="dogs-list" th:href="@{/dogs/dogslist}">Go to dogs list</a></p></div>
+            <div><p><a id="dog-types" th:href="@{/dogs/dogtypes}">Go to dog types</a></p></div>
+            <div><p><a id="pibble-types" th:href="@{/dogs/pibbletypes}">Go to pibble types</a></p><div>
         </div>
 
         <div class="doggy">

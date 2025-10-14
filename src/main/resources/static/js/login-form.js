@@ -1,6 +1,6 @@
 // This script was made by AI, I don't know Javascript
 
-document.getElementById("loginForm").addEventListener("submit", function(e) {
+document.getElementById("loginForm").addEventListener("submit", (e) => {
     e.preventDefault(); // prevent normal form submission
 
     const name = document.getElementById("username").value;
