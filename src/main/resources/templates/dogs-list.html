@@ -11,27 +11,28 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Breed</th>
-                        <th>Name</th>
-                        <th>Color</th>
-                        <th>Edit Dog</th>
-                        <th>Delete Dog</th>
+                        <th id="id">ID</th>
+                        <th id="breed">Breed</th>
+                        <th id="name">Name</th>
+                        <th id="color">Color</th>
+                        <th id="edit">Edit Dog</th>
+                        <th id="delete">Delete Dog</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="dog : ${dogs}">
-                        <td th:text="${dog.id}"></td>
-                        <td th:text="${dog.breed}"></td>
-                        <td th:text="${dog.name}"></td>
-                        <td th:text="${dog.color}"></td>
-                        <td><a th:href="@{/dogs/update/{id} (id=${dog.id})}">Edit Dog</a></td>
-                        <td><a th:href="@{/dogs/delete/{id} (id=${dog.id})}">Delete Dog</a></td>
+                        <td headers="id" th:text="${dog.id}"></td>
+                        <td headers="breed" th:text="${dog.breed}"></td>
+                        <td headers="name" th:text="${dog.name}"></td>
+                        <td headers="color" th:text="${dog.color}"></td>
+                        <td headers="edit"><a th:href="@{/dogs/update/{id} (id=${dog.id})}">Edit Dog</a></td>
+                        <td headers="delete"><a th:href="@{/dogs/delete/{id} (id=${dog.id})}">Delete Dog</a></td>
                     </tr> 
                 </tbody> 
             </table>
+            
         </div>
-        <p><a id="new-dog-link" href="/home/newdog">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
-        <p><a id="homepage-link" href="/home">Go to homepage</a></p>
+        <p><a id="new-dog-link" th:href="@{/dogs/newdog}">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
+        <p><a id="homepage-link" th:href="@{/home}">Homepage</a></p>
     </div>  
 </html>

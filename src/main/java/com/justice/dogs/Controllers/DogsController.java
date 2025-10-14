@@ -1,8 +1,8 @@
-package com.justice.dogs;
+package com.justice.dogs.Controllers;
 
+import com.justice.dogs.dogsHolder.Dog;
+import com.justice.dogs.dogsHolder.DogsRepo;
 import com.justice.dogs.exceptions.DogNotFoundException;
-import com.justice.dogs.holder.Dog;
-import com.justice.dogs.holder.DogsRepo;
 
 import jakarta.validation.Valid;
 
@@ -35,18 +35,18 @@ public class DogsController {
         return "index";
     }
     
-    @GetMapping("/home/dogslist") // takes user to the page where they can add dogs to a database
+    @GetMapping("/dogs/dogslist") // takes user to the page where they can add dogs to a database
     public String dogsListPage(Model model) {
         model.addAttribute("dogs", repo.findAll());
         return "dogs-list";
     }
 
-    @GetMapping("/home/dogtypes") // takes user to a page about different dogs
+    @GetMapping("/dogs/dogtypes") // takes user to a page about different dogs
     public String dogTypesPage(Model model) {
         return "dog-types";
     }
 
-    @GetMapping("/home/pibbletypes") // a page only to display types of pibbles
+    @GetMapping("/dogs/pibbletypes") // a page only to display types of pibbles
     public String pibbleTypesPage(Model model) {
         return "pibble-types";
     }
@@ -65,8 +65,17 @@ public class DogsController {
         model.addAttribute("dog", dog);
         return "update-dog";
     }
+    
+    @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
+    public String updateDog(@PathVariable("id") long id, @Valid Dog dog, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "redirect:/home/dogslist";
+        }
+        repo.save(dog);
+        return "redirect:/home/dogslist";
+    }
 
-    @GetMapping("/home/newdog")
+    @GetMapping("/dogs/newdog")
     public String signUpForm(Dog dog) {
         return "add-dog";
     }
@@ -88,16 +97,7 @@ public class DogsController {
         // then redirects the user back to the dogslist page
         repo.save(dog);
         return "redirect:/home/dogslist";
-    }
-       
-    @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
-    public String updateDog(@PathVariable("id") long id, @Valid Dog dog, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "redirect:/home/dogslist";
-        }
-        repo.save(dog);
-        return "redirect:/home/dogslist";
-    }
+    }   
 
     @GetMapping("/dogs/delete/{id}") // can't use DeleteMapping here or else a 405 error occurs
     public String removeDog(@PathVariable("id") long id, Model model) {
@@ -105,5 +105,5 @@ public class DogsController {
         .orElseThrow(() -> new DogNotFoundException(id));
         repo.delete(dog);
         return "redirect:/home";
-    }    
+    }
 }

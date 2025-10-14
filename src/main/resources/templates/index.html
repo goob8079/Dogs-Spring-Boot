@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>DOGS</title>
         <link rel="stylesheet" th:href="@{/css/index.css}">
     </head>
     <tbody>
+        <p><a id="registration-page" th:href="@{/home/auth/newUser}">Create Account</a></p>
+        <p><a id="login-page" th:href="@{/home/auth/login}">Login</a></p>
         <h1>Welcome to the homepage!</h1>
-        <p><a id="login-page" href="/home/login">Login</a></p>
-        <p><a id="registration-page" href="/home/registration">Registration</a></p>
+
         <div class="subpages-container">
-            <div><p><a id="dogs-list" href="/home/dogslist">Go to dogs list</a></p></div>
-            <div><p><a id="dog-types" href="/home/dogtypes">Go to dog types</a></p></div>
-            <div><p><a id="pibble-types" href="/home/pibbletypes">Go to pibble types</a></p><div>
+            <div><p><a id="dogs-list" th:href="@{/dogs/dogslist}">Go to dogs list</a></p></div>
+            <div><p><a id="dog-types" th:href="@{/dogs/dogtypes}">Go to dog types</a></p></div>
+            <div><p><a id="pibble-types" th:href="@{/dogs/pibbletypes}">Go to pibble types</a></p><div>
         </div>
+
         <div class="doggy">
             <img id="silly-dog" th:src="@{img/silly_white_dog.jpg}" alt="silly white dog">
         </div>

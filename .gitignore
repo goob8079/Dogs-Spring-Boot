@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ignore local profile config
+src/main/resources/application-local.yml
+
+# ignore .env files
+.env

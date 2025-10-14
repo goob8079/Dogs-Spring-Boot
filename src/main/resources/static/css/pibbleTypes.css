@@ -1,254 +1,81 @@
-.header1 {
-    margin: auto;
-    text-align: center;
-    width: 180px;
-    border: 2px dashed;
-    border-color: blue;
-}
-
-/* Allows the user to scroll down past the last div element even if there
-is nothing below it */
-html, tbody {
-    height: auto;
-    padding-bottom: 200px;
-}
-
-/* The class containing the rest of the divs.
-The one issue with this is that the images have to be the same or similar sizes
-or else it breaks the whole page. */
-/* Another issue with this is because of the hover feature and the text boxes,
-any time the cursor is over the names of one of the pibbles, it causes everything to shift */
-.pibble-container1, .pibble-container2, .pibble-container3 {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    font-family: Helvetica, sans-serif;
+body {
+    overflow: hidden;
 }
 
 #homepage-link {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    margin: auto;
-    padding: 5px;
+    position: absolute; top: 2%; left: 1%;
+    margin: auto; padding: 5px;
     font-size: 25px;
-    border: 4px solid;
-    border-color: black;
+    border: 4px solid; border-color: black;
 }
 
-/* to set automatic margins and padding for the type-pibble div */
-.type-pibble {
-    margin: auto;
-    padding: 15px;
-}
-/* to set the size and margin for the text that says "Pibble" */
-.type-pibble > p {
-    font-size: 30px;
-    margin: 0;
-}
-/* this line selects the paragraphs that are located 
-under the img element located within the type-pibble class */
-.type-pibble > img ~ p {
-    text-align: center;
-}
-/* to hide the description of what a pibble is */
-#hidden-pibble {
-    display: none;
-}
-#pibble-name {
-    text-decoration: underline;
-}
-/* this is so that whenever the user hovers over the "Pibble" text
-the description of what it is appears */
-#pibble-name:hover + #hidden-pibble {
-    margin: auto;
-    text-align: center;
+.header1 {
     padding: 10px;
-    width: 250px;
-    font-size: 20px;
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+    width: 100%;
+    display: flex; justify-content: center; align-items: center;
+    
+    h1 {
+        text-align: center;
+        height: 50px; width: 20%;
+        border: 2px dashed; border-color: blue;
+        display: flex; justify-content: center; align-items: center;
+    }
 }
 
-.type-gmail {
-    margin: auto;
-    padding: 15px;
-}
-.type-gmail > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-gmail > img ~ p {
-    text-align: center;
-}
-#hidden-gmail {
-    display: none;
-}
-#gmail-name {
-    text-decoration: underline;
-}
-#gmail-name:hover + #hidden-gmail {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 150px;
-    font-size: 20px;
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+.pibble-container1, .pibble-container2, .pibble-container3 {
+    display: flex; flex-direction: row; justify-content: space-evenly;
+    font-family: Helvetica, sans-serif;
 }
 
-.type-washington {
-    margin: auto;
-    padding: 15px;
-}
-.type-washington > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-washington > img ~ p {
-    text-align: center;
-}
-#hidden-washington {
-    display: none;
-}
-#washington-name {
-    text-decoration: underline;
-}
-#washington-name:hover + #hidden-washington {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 200px;
-    font-size: 20px;
-    display: block;
-    color: blue;
-    background-color: white;
-    border: 2px outset;
-    border-color: gray;
+.type-container {
+    margin: auto; padding: 15px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 10px;
+
+    button {
+        font-size: 20px;
+        margin: 0;
+        border: 1px solid black;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: lightblue;
+    }
+
+    img ~ button {
+        text-align: center;
+    }
 }
 
-.type-geeble {
-    margin: auto;
-    padding: 15px;
-}
-.type-geeble > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-geeble > img ~ p {
-    text-align: center;
-}
-#hidden-geeble {
+.hidden-desc {
     display: none;
-}
-#geeble-name {
-    text-decoration: underline;
-}
-#geeble-name:hover + #hidden-geeble {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 200px;
-    font-size: 20px;
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
-}
+    position: fixed; left: 0; top: 0;
+    z-index: 1;
+    height: 100%; width: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.4);
 
-.type-bagel {
-    margin: auto;
-    padding: 15px;
-}
-.type-bagel > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-bagel > img ~ p {
-    text-align: center;
-}
-#hidden-bagel {
-    display: none;
-}
-#bagel-name {
-    text-decoration: underline;
-}
-#bagel-name:hover + #hidden-bagel {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 150px;
-    font-size: 20px;
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
-}
+    .desc-content {
+        position: absolute; left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 20px; 
+        border: 3px dashed black;
+        width: 80%;
+        font-size: 20px;
+        text-align: center;
+    }
 
-.type-football {
-    margin: auto;
-    padding: 15px;
-}
-.type-football > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-football > img ~ p {
-    text-align: center;
-}
-#hidden-football {
-    display: none;
-}
-#football-name {
-    text-decoration: underline;
-}
-#football-name:hover + #hidden-football {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 150px;
-    font-size: 20px;
-    display: block;
-    color: blanchedalmond;
-    background-color: black;
-    border: 2px double;
-    border-color: burlywood;
-}
-
-.type-pebble {
-    margin: auto;
-    padding: 15px;
-}
-.type-pebble > p {
-    font-size: 30px;
-    margin: 0;
-}
-.type-pebble > img ~ p {
-    text-align: center;
-}
-#hidden-pebble {
-    display: none;
-}
-#pebble-name {
-    text-decoration: underline;
-}
-#pebble-name:hover + #hidden-pebble {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    width: 150px;
-    font-size: 20px;
-    display: block;
-    color: black;
-    background-color: darkseagreen;
-    border: 2px double;
-    border-color: plum;
+    .close {
+        position: absolute; top: 10px; right: 15px;
+        color: #aaaaaa;
+        font-size: 28px; font-weight: bold;
+    }
+    
+    .close:hover {
+        color: #888;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }

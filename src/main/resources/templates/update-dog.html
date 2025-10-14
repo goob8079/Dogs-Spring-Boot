@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Update Dog</title>
-        <link rel="stylesheet" th:href="@{/css/update.css}">
+        <link rel="stylesheet" th:href="@{/css/updateDog.css}">
     </head>
-    <body>
+    <tbody>
         <form action="#" th:action="@{/dogs/update/{id} (id=${dog.id})}" th:object="${dog}" th:method="post">
             <div>
                 <label for="breed">Breed</label>
@@ -20,5 +20,5 @@
             </div>
             <input id="update-dogBt" type="submit" value="Update Dog">
         </form>
-    </body>
+    </tbody>
 </html>

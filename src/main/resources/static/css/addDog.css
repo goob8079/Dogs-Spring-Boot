@@ -1,31 +1,31 @@
+:root {
+    --main-color: rgb(235, 145, 28);
+}
+
 * {
     font-size: 30px;
 }
 
 body {
-    margin: auto;
+    margin: auto; padding: 10px;
     width: 60%;
     text-align: center;
-    padding: 10px;
     background-image: url(../img/Smiley_.jpg);
 }
 
-body>h1 {
+body > h1 {
     margin: auto;
     width: 41%;
-    background-color: black;
-    color: rgb(235, 145, 28);
+    color: var(--main-color, white); background-color: black;
 }
 
 div {
-    margin: auto;
-    padding: 10px;
-    background-color: black;
-    color: rgb(235, 145, 28);
+    margin: auto; padding: 10px;
+    color: var(--main-color, white); background-color: black;
     width: 40%;
 }
 
 #add-dogBt {
     padding: 10px;
-    color: rgb(235, 145, 28);
+    color: var(--main-color, white);
 }

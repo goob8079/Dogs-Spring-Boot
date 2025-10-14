@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: dogs
+  docker:
+    compose:
+      lifecycle-management: start-and-stop
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+
+hibernate:
+  hbm2ddl:
+    auto: update
+  dialect: org.hibernate.dialect.MySQLDialect

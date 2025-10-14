@@ -1,71 +1,61 @@
+:root {
+    --gl-padding: 10px;
+}
+
+body {
+    height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
 h1 {
-    margin: auto;
-    position: absolute;
+    /* margin: auto; */
+    padding-top: 40px;
+    /* position: absolute; top: 30%; */
     text-align: center;
-    top: 30%;
     width: 100%;
 }
 
 #login-page {
-    margin: auto;
-    padding: 10px;
+    margin: auto; padding: var(--gl-padding);
     font-size: 20px;
-    position: absolute;
-    top: 0%;
-    right: 2%;
+    position: absolute; top: 0%; right: 2%;
 }
 
 #registration-page {
-    margin: auto;
-    padding: 10px;
+    margin: auto; padding: var(--gl-padding);
     font-size: 20px;
-    position: absolute;
-    top: 4%;
-    right: 2%;
+    position: absolute; top: 4%; right: 2%;
 }
 
 #dogs-list {
-    font-size: 20px;
-    margin: auto;
-    padding: 10px;
-    text-decoration: none;
+    font-size: 20px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 #dog-types {
-    font-size: 30px;
-    margin: auto;
-    padding: 10px;
-    text-decoration: none;
+    font-size: 30px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 #pibble-types {
-    font-size: 40px;
-    margin: auto;
-    padding: 10px;
-    text-decoration: none;
+    font-size: 40px; text-decoration: none;
+    margin: auto; padding: var(--gl-padding);
 }
 
 .subpages-container {
-    margin: auto;
-    position: absolute;
-    top: 40%;
-    width: auto;
-    display: table;
-    table-layout: fixed;
+    margin: 1rem;
+    /* position: absolute; top: 40%; */
     width: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 
 .subpages-container > div {
     text-align: center;
     display: table-row;
-}
+} 
 
 .subpages-container > a {
-    display: table-cell;
-    vertical-align: middle;
-
+    display: table-cell; vertical-align: middle;
 }
 
 /* This block allows the dog image to spin */
@@ -74,6 +64,11 @@ h1 {
     border-radius: 50%;
     animation: animate 1s linear infinite;
     perspective: 500px;
+
+    img {
+        height: 200px;
+        width: 200px;
+    }
 }
 
 /* @keyframes allows for the control of an animation sequence in steps */
@@ -84,13 +79,4 @@ h1 {
     100% {
         transform: rotateY(360deg);
     }
-}
-
-img {
-    height: 200px;
-    width: 200px;
-}
-
-body {
-    background-image: none;
 }

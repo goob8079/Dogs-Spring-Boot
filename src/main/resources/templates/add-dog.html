@@ -4,7 +4,7 @@
         <title>Add Dog</title>
         <link rel="stylesheet" th:href="@{/css/addDog.css}">
     </head>
-    <body>
+    <tbody>
         <h1>Add a new Dog</h1>
         <form action="#" th:action="@{/dogs/add}" th:object="${dog}" method="post">
             <div>
@@ -21,5 +21,5 @@
             </div>
             <input id="add-dogBt" type="submit" value="Add Dog">
         </form>
-    </body>
+    </tbody>
 </html>
