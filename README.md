@@ -2,7 +2,7 @@
 <h1>Trying to make a basic login page and registration form</h1>
 
 The website will include a backend for a website to display different dogs and such.
-Front-end will be made with Thymeleaf and HTML at the moment.
+Front-end will be made with Thymeleaf and HTML/CSS at the moment (and with JavaScript in the future).
 
 Finally managed to get two databases (MySQL) running in the application, and containerizing them with Docker.
 
@@ -53,8 +53,9 @@ I will try to read the docs and use those instead. Likely going to try implement
 
 # Extra notes
 1. The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).<br>
-    a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.
+    a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.<br/>
+    b. (Personal Note) OAUTH and JWT are used for authentication and authorization, meaning they are meant to be used after a user has created and registered an account.
 
-2. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users.
+3. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users. Most likely what will be implemented is an email system for registration and/or allowing logging in through other accounts/websites such as Google and Github.
 
-3. When storing a secret key for JWT authentication, the best way to store it would be using a vault like AWS Secret Manager. However, at the moment I will store it within an .env file, since it is more secure than storing it within a class in the application.
+4. When storing a secret key for JWT authentication, the best way to store it would be using a vault like AWS Secret Manager. However, at the moment I will store it within an .env file, since it is more secure than storing it within a class in the application.
