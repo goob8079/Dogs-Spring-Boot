@@ -22,6 +22,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // using an updated version of the syntax (after Spring Security v6.xx)
         http
+            .requiresChannel(channel -> 
+                channel.anyRequest().requiresSecure()
+            ) // every request must use HTTPS; automatically redirect HTTP requests to HTTPS
             .authorizeHttpRequests(requests -> requests
                 // public endpoints (accessible by anyone)
                 .requestMatchers("/", "/home", "/dogs/dogtypes", "/dogs/pibbletypes", "/dogs/newdog",

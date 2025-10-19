@@ -9,17 +9,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
     allow-circular-references: true
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${CLIENT_ID}
-            client-secret: ${CLIENT_SECRET}
-            scope: profile, email
-            redirect-uri: "${baseUrl}/login/oauth2/code/{registrationId}"
-            authorization-grant-type: authorization_code
-            client-name: Google
 
 logging:
   level:
