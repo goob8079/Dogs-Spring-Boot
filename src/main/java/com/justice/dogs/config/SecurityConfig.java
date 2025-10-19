@@ -19,7 +19,6 @@ public class SecurityConfig {
             .authorizeHttpRequests((requests) -> requests
             // public endpoints (accessible by anyone)
             .requestMatchers("/", "/home", "/dogs/dogslist", "/dogs/dogtypes", "/dogs/pibbletypes",
-                            "/home/auth", "/home/auth/newUser", "/home/auth/tokenGeneration", "/home/auth/login",
                             "/dogs/newdog",
                             "/js/hidden-pibble.js",
                             "/css/**", "/img/**").permitAll()
