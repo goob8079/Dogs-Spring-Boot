@@ -1,5 +1,6 @@
 package com.justice.dogs.config;
 
+import com.justice.dogs.dogsHolder.DogsRepo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,20 +11,29 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final DogsRepo dogsRepo;
+
+    SecurityConfig(DogsRepo dogsRepo) {
+        this.dogsRepo = dogsRepo;
+    }
    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // this allows specific paths/pages to be loaded without requiring a login. 
-        // /css/** and /img/** need to be added to allow the css templates and images to load
+        // using an updated version of the syntax (after Spring Security v6.xx)
         http
-            .authorizeHttpRequests((requests) -> requests
-            // public endpoints (accessible by anyone)
-            .requestMatchers("/", "/home", "/dogs/dogslist", "/dogs/dogtypes", "/dogs/pibbletypes",
-                            "/dogs/newdog",
-                            "/js/hidden-pibble.js",
-                            "/css/**", "/img/**").permitAll()
-            .anyRequest().authenticated() // any other endpoint not listed requires authentication
-        );
+            .authorizeHttpRequests(requests -> requests
+                // public endpoints (accessible by anyone)
+                .requestMatchers("/", "/home", "/dogs/dogtypes", "/dogs/pibbletypes", "/dogs/newdog",
+                        "/login",
+                        "/js/hidden-pibble.js",
+                        "/css/**", "/img/**").permitAll()
+                .anyRequest().authenticated() // any other endpoint not listed requires authentication
+            )
+            // enable Oauth2 login support
+            .oauth2Login(oauth2 -> oauth2
+                .defaultSuccessUrl("/home/auth", true)
+            );
                     
 		return http.build();
     } 

@@ -6,10 +6,12 @@
         <link rel="stylesheet" th:href="@{/css/index.css}">
     </head>
     <tbody>
-        <p><a id="login-link" th:href="@{/oauth2/authorization/google}">Login</a></p>
+        <p id="username">Username: <span th:text="${username}"></span></p>
+        <p id="email">Email: <span th:text="${email}"></span></p>
         <h1>Welcome to the homepage!</h1>
 
         <div class="subpages-container">
+            <div><p><a id="dogs-list" th:href="@{/dogs/dogslist}">Go to dogs list</a></p></div>
             <div><p><a id="dog-types" th:href="@{/dogs/dogtypes}">Go to dog types</a></p></div>
             <div><p><a id="pibble-types" th:href="@{/dogs/pibbletypes}">Go to pibble types</a></p><div>
         </div>

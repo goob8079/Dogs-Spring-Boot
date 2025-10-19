@@ -29,11 +29,6 @@ public class DogsController {
     public DogsController(DogsRepo repo) {
         this.repo = repo;
     }
-
-    @GetMapping("/home") // the homepage
-    public String homepage(Model model) {
-        return "index";
-    }
     
     @GetMapping("/dogs/dogslist") // takes user to the page where they can add dogs to a database
     public String dogsListPage(Model model) {

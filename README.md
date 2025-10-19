@@ -52,12 +52,4 @@ This time I'm restarting the whole process for login and registration, since the
 I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
 
 # Extra notes
-1. The reason CSRF (Cross-site request forgery) protection is disabled is because JWT tokens are stateless. JWT tokens are sent in the authorization header so they are not automatically included in request made by the browser (like cookies).<br>
-    a. Stateless sessions are sessions that do no store any information/data (cookies) in the server about a user's previous interactions.<br/>
-    b. (Personal Note) OAUTH and JWT are used for authentication and authorization, meaning they are meant to be used after a user has created and registered an account.
-
-3. Now OAuth2.0 has been implemented into the program. Next, I want to figure out how to make a registration and login page instead of using Postman to register new users. Most likely what will be implemented is an email system for registration and/or allowing logging in through other accounts/websites such as Google and Github.
-
-4. When storing a secret key for JWT authentication, the best way to store it would be using a vault like AWS Secret Manager. However, at the moment I will store it within an .env file, since it is more secure than storing it within a class in the application.
-
-5. IGNORE 3 and 4; I think I will just try to figure out a way to let users login through Google and Github only, instead of creating a registration page and using JWT. 
+1. I've restarted the whole process of adding OAuth2, since I kind of forgot what I did previously, and it wasn't working properly.
