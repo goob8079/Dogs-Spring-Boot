@@ -14,26 +14,9 @@ services:
       - dogs-db:/var/lib/mysql
     networks:
       - backend
-    
-  mysql2:
-    container_name: users-mysql
-    image: mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: usersdb
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-    ports:
-      - "3307:3306"
-    volumes:
-      - users-db:/var/lib/mysql
-    networks:
-      - backend
 
 volumes:
   dogs-db:
-  users-db:
 
 networks:
   backend:
