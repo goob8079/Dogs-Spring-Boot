@@ -48,8 +48,7 @@ To fix this issue, I had to define PasswordEncoder in a seperate class (CommonCo
 
 <h2>Current issue</h2>
 
-This time I'm restarting the whole process for login and registration, since the current tutorial I was following didn't work. 
-I will try to read the docs and use those instead. Likely going to try implement OAuth2.0
+I've finally managed to implement OAuth2 properly, with a logout feature as well. Now, there's an issue with the add dogs functionality, for some reason any time I try to add a dog, it doesn't add it to the DB, and just result in the page displaying "There are no dogs!".
 
 # Extra notes
 1. I've restarted the whole process of adding OAuth2, since I kind of forgot what I did previously, and it wasn't working properly.
