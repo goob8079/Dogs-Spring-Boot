@@ -29,13 +29,16 @@ public class SecurityConfig {
                 // public endpoints (accessible by anyone)
                 .requestMatchers("/", "/home", "/dogs/dogtypes", "/dogs/pibbletypes", "/dogs/newdog",
                         "/login",
-                        "/js/hidden-pibble.js",
+                        "/js/hidden-pibble.js", "/js/user-access.js",
                         "/css/**", "/img/**").permitAll()
                 .anyRequest().authenticated() // any other endpoint not listed requires authentication
             )
             // enable Oauth2 login support
             .oauth2Login(oauth2 -> oauth2
                 .defaultSuccessUrl("/home/auth", true)
+            )
+            .logout(l -> l
+                .logoutSuccessUrl("/home")
             );
                     
 		return http.build();

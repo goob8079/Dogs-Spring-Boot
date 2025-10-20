@@ -1,54 +1,42 @@
-:root {
-    --gl-padding: 10px;
-}
-
 body {
     height: 100vh;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 
 h1 {
-    /* margin: auto; */
-    padding-top: 40px;
-    /* position: absolute; top: 30%; */
     text-align: center;
     width: 100%;
 }
 
-#dogs-list {
-    font-size: 20px; text-decoration: none;
-    margin: auto; padding: var(--gl-padding);
+.authenticated {
+    display: none;
 }
 
-#dog-types {
-    font-size: 30px; text-decoration: none;
-    margin: auto; padding: var(--gl-padding);
-}
-
-#pibble-types {
-    font-size: 40px; text-decoration: none;
-    margin: auto; padding: var(--gl-padding);
+#login-link { 
+    font-size: 20px;
+    position: absolute; top: 3%; right: 3%;
 }
 
 .subpages-container {
-    margin: 1rem;
-    /* position: absolute; top: 40%; */
+    margin: 8px;
     width: 100%;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 
-.subpages-container > div {
-    text-align: center;
-    display: table-row;
-} 
-
-.subpages-container > a {
-    display: table-cell; vertical-align: middle;
+#dogs-list {
+    display: none;
+}
+#dog-types {
+    font-size: 30px; text-decoration: none;
+}
+#pibble-types {
+    font-size: 40px; text-decoration: none;
 }
 
 /* This block allows the dog image to spin */
 /* a "." before a keyword means that it is a class */
 .doggy {
+    margin: 8px;
     border-radius: 50%;
     animation: animate 1s linear infinite;
     perspective: 500px;

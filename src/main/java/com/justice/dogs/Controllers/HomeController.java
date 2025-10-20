@@ -23,6 +23,6 @@ public class HomeController {
         model.addAttribute("username", username);
         model.addAttribute("email", email);
 
-        return "index-auth";
+        return "index";
     }
 }
