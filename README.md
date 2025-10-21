@@ -23,29 +23,6 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Data | Used by lombok, automatically adds getters and setters to a class | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L14-L15) |
 | @AllArgsConstructor and @NoArgsConstructor | Used by lombok, automatically creates a constructor for a classes | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L15-L16) | 
 
-
-# Issues
-
-1. One major issues I've run into so far in this branch was getting two databases connected to this application. This could've been happening because I'm using Docker Compose, but i don't really know.<br>
-I kept getting the error:  
-**java.lang.IllegalStateException: Cannot get a connection as the driver manager is not properly initialized.**<br>
-and also the error:  
-**Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling DriverManager.getConnection() [Access denied for user 'justice'@'%' (using password: NO)]**<br>
-So in order to fix these issues, I had to go into the Docker containers for each of the databases, and did the following:  
-    1. Go to Exec
-    2. type "mysql -u root -p" (no double quotes)
-    3. (If user is not created) type "CREATE USER 'justice'@'%' IDENTIFIED BY 'password';" (no double quotes)
-    4. type "GRANT ALL PRIVILEGES ON \*.\* TO 'justice'@'%' WITH GRANT OPTION;" (no double quotes)<br>
-This took way longer than expected to figure out but I fixed my issue.  
-
-2. Another issue I encountered was a cycle occured, with the error:  
-Description:  
-**The dependencies of some of the beans in the application context form a cycle:**  
-**|  jwtAuthFilter defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\services\JwtAuthFilter.class]**
-**|  userInfoService (field private org.springframework.security.crypto.password.PasswordEncoder com.justice.dogs.services.UserInfoService.encoder)**
-**|  securityConfig defined in file [C:\Users\Frost\Documents\Coding_Things\Dogs-Spring-Boot\target\classes\com\justice\dogs\config\SecurityConfig.class]**  
-To fix this issue, I had to define PasswordEncoder in a seperate class (CommonConfig) and that fixed the issue.
-
 <h2>Current issue</h2>
 
 I've finally managed to implement OAuth2 properly, with a logout feature as well. Now, there's an issue with the add dogs functionality, for some reason any time I try to add a dog, it doesn't add it to the DB, and just result in the page displaying "There are no dogs!".
