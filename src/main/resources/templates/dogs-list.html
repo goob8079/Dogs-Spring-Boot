@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> <!-- basically the homepage -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Dogs List</title>
-        <link rel="stylesheet" th:href="@{/css/dogsList.css}"> <!-- links main.css to this html file -->
+        <link rel="stylesheet" th:href="@{/css/dogsList.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <div th:switch="${dogs}"> 
         <h2 th:case="null">There are no dogs!</h2> <!-- case for if there are no dogs -->
@@ -32,7 +33,7 @@
             </table>
             
         </div>
-        <p><a id="new-dog-link" th:href="@{/dogs/newdog}">Add a new dog</a></p> <!-- will show even if there are no dogs since this is outside the switch -->
+        <p><a id="new-dog-link" th:href="@{/dogs/newdog}">Add a new dog</a></p>
         <p><a id="homepage-link" th:href="@{/home}">Homepage</a></p>
     </div>  
 </html>

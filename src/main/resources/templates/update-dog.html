@@ -3,6 +3,7 @@
     <head>
         <title>Update Dog</title>
         <link rel="stylesheet" th:href="@{/css/updateDog.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <tbody>
         <form action="#" th:action="@{/dogs/update/{id} (id=${dog.id})}" th:object="${dog}" th:method="post">
