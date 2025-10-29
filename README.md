@@ -1,5 +1,4 @@
 <h1> At the moment, taking a break from working on this website to learn more HTML, CSS, and JavaScript. I will still try to come back every now and then to work on this though. </h1>
-<h1>Trying to make a basic login page and registration form</h1>
 
 The website will include a backend for a website to display different dogs and such.
 Front-end will be made with Thymeleaf and HTML/CSS at the moment (and with JavaScript in the future).
@@ -23,9 +22,10 @@ This is mainly just for me so I can keep better track of what classes, validator
 | @Data | Used by lombok, automatically adds getters and setters to a class | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L14-L15) |
 | @AllArgsConstructor and @NoArgsConstructor | Used by lombok, automatically creates a constructor for a classes | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L15-L16) | 
 
-<h2>Current issue</h2>
+<h2>Current status</h2>
 
-I've finally managed to implement OAuth2 properly, with a logout feature as well. Now, there's an issue with the add dogs functionality, for some reason any time I try to add a dog, it doesn't add it to the DB, and just result in the page displaying "There are no dogs!".
+I've finally managed to implement OAuth2 properly, with a logout feature as well.</br>
+I think next I will focus more on the frontend.
 
 # Extra notes
 1. I've restarted the whole process of adding OAuth2, since I kind of forgot what I did previously, and it wasn't working properly.
