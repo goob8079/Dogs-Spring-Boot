@@ -64,10 +64,10 @@ public class DogsController {
     @PostMapping("/dogs/update/{id}") // @Valid is used to validate the dog variable
     public String updateDog(@PathVariable("id") long id, @Valid Dog dog, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "redirect:/home/dogslist";
+            return "redirect:/dogs/dogslist";
         }
         repo.save(dog);
-        return "redirect:/home/dogslist";
+        return "redirect:/dogs/dogslist";
     }
 
     @GetMapping("/dogs/newdog")
@@ -91,7 +91,7 @@ public class DogsController {
         // it gets added to the repo variable's MySQL table
         // then redirects the user back to the dogslist page
         repo.save(dog);
-        return "redirect:/home/dogslist";
+        return "redirect:/dogs/dogslist";
     }   
 
     @GetMapping("/dogs/delete/{id}") // can't use DeleteMapping here or else a 405 error occurs
@@ -99,6 +99,6 @@ public class DogsController {
         Dog dog = repo.findById(id)
         .orElseThrow(() -> new DogNotFoundException(id));
         repo.delete(dog);
-        return "redirect:/home";
+        return "dogs-list";
     }
 }

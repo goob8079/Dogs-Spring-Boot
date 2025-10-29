@@ -37,6 +37,7 @@ public class SecurityConfig {
             .oauth2Login(oauth2 -> oauth2
                 .defaultSuccessUrl("/home/auth", true)
             )
+            // by default, Spring clears the session and cookies, so nothing has to be done
             .logout(l -> l
                 .logoutSuccessUrl("/home")
             );
