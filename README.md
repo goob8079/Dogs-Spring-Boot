@@ -7,20 +7,19 @@ Finally managed to get two databases (MySQL) running in the application, and con
 
 To run this program, Docker, MySQL, and SQLTools will need to be installed (when using VSCode)
 
-# Use of classes, validators, methods, etc. 
-This is mainly just for me so I can keep better track of what classes, validators, methods, etc. that I use throughout my project and adding descriptions to them to understand them.
+<h2>Feautures of the website</h2>
 
-| Class, etc. | Description | Use Case |
-| --- | --- | --- |
-| @Target | @Target means the ValidEmail annotation can annotate the specified types | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/2nd-branch/src/main/java/com/justice/dogs/login/ValidEmail.java#L14-L15) |
-| @Target(ElementType.TYPE) | TYPE means the annotation can be used for classes, interfaces, and enums | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/MatchingPassword.java#L15-L16) |
-| @Retention(RetentionPolicy.RUNTIME) | @Retention determines when the annotation (ValidEmail) gets discarded. <br>RUNTIME means it'll be discarded when the program is running, after compile time | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L17-L18) |
-| @Constraint(validatedBy = EmailValidator.class) | @Constraint is used to add a custom validation constraint. <br>Which I think means it uses the class specified by validatedBy to check for any error checking if it is included in that class?? | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L20-L21) |
-| @Documented | @Documented just defines an annotation and ensures that the custom annotation shows up in the JavaDoc | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/java/com/justice/dogs/login/ValidEmail.java#L22-L23) |
-| Various Thymeleaf HTML formats | ${} indicates variable names. <br>*{} selects the child of the chosen object and injects it into the template file (HTML). <br>#{} brings externalized text (such as those in a .properties file) into the template file. | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/main/src/main/resources/templates/registration.html) |
-| @Component | Allows Spring to automatically detect and register custom beans | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/services/JwtAuthFilter.java#L5-L6) | 
-| @Data | Used by lombok, automatically adds getters and setters to a class | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L14-L15) |
-| @AllArgsConstructor and @NoArgsConstructor | Used by lombok, automatically creates a constructor for a classes | [Here](https://github.com/goob8079/Dogs-Spring-Boot/blob/basic-login-branch/src/main/java/com/justice/dogs/user/UserEntity.java#L15-L16) | 
+<ol>
+  <li>
+    Connection to a MySQL db which is inside of a Docker container
+  </li>
+  <li>
+    HTTPS is used for connectiom to the website; certificate from mkcert
+  </li>
+  <li>
+    OAuth2.0 implemented to allow users to login with their Google account
+  </li>
+</ol>
 
 <h2>Current status</h2>
 
